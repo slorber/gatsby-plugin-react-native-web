@@ -3,5 +3,8 @@
     "stage-0",
     "latest",
     "react"
+  ],
+  "plugins": [
+    "babel-plugin-react-native-web"
   ]
 }

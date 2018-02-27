@@ -9,17 +9,20 @@ exports.replaceRenderer = ({
                              setHeadComponents,
                            }) => {
 
-  // See https://github.com/necolas/react-native-web/blob/master/website/guides/getting-started.md#server-side-rendering
   class App extends React.Component {
     render() {
       return bodyComponent;
     }
   }
 
+  // See https://github.com/necolas/react-native-web/blob/master/website/guides/getting-started.md#server-side-rendering
   AppRegistry.registerComponent('App', () => App)
   const {element, getStyleElement} = AppRegistry.getApplication('App');
 
-  const html = ReactDOMServer.renderToString(element);
+  // Because RNW add an extra container and we don't want it
+  const finalElement = element.props.children;
+
+  const html = ReactDOMServer.renderToString(finalElement);
   const styleElement = getStyleElement();
 
   replaceBodyHTMLString(html);
