@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+.idea
+
+/gatsby-ssr.js
+/gatsby-node.js
