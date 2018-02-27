@@ -37,7 +37,7 @@ You will also need `gatsby-plugin-react-next` for React 16 support.
 
 Here is a Gatsby page that renders fine:
 
-``` 
+```js 
 import React from 'react'
 import Link from 'gatsby-link'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
