@@ -19,10 +19,7 @@ exports.replaceRenderer = ({
   AppRegistry.registerComponent('App', () => App)
   const {element, getStyleElement} = AppRegistry.getApplication('App');
 
-  // Because RNW add an extra container and we don't want it
-  const finalElement = element.props.children;
-
-  const html = ReactDOMServer.renderToString(finalElement);
+  const html = ReactDOMServer.renderToString(element);
   const styleElement = getStyleElement();
 
   replaceBodyHTMLString(html);

@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-react-native-web",
-  "version": "0.0.5",
+  "version": "0.1.2",
   "description": "Gatsby plugin to support react-native-web rendering",
   "keywords": [
     "gatsby",
