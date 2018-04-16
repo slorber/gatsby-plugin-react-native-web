@@ -33,6 +33,8 @@ It is recommended to use these versions:
 
 You will also need `gatsby-plugin-react-next` for React 16 support.
 
+There is an runnable [example](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-react-native-web) in Gatsby repository, which you can use as a boilerplate if you want.
+
 # Example usage
 
 Here is a Gatsby page that renders fine:
