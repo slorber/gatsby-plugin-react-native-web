@@ -1,16 +1,14 @@
 import React from "react"
 import {AppRegistry} from 'react-native'
 
-exports.wrapRootComponent = ({Root}) => {
-
-  AppRegistry.registerComponent('Root', () => Root);
-
-  class WrappedRootComponent extends React.PureComponent {
-    render() {
-      const { element } = AppRegistry.getApplication('Root', { initialProps: this.props });
-      return element;
+exports.getRenderer = () => {
+  return (element, container, callback) => {
+    class Root extends React.Component {
+      render() {
+        return element;
+      }
     }
-  }
-
-  return WrappedRootComponent;
+    AppRegistry.registerComponent('App', () => Root);
+    AppRegistry.runApplication('App', { initialProps: {}, rootTag: container, callback });
+  };
 };
