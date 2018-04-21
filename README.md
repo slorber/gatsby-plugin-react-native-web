@@ -22,6 +22,8 @@ or
 
 `yarn add gatsby-plugin-react-native-web`
 
+For now, stay on version 0.1.2 as 0.2.x need a PR on Gatsby to be merged.
+
 
 It is recommended to use these versions:
 
