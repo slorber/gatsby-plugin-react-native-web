@@ -2,16 +2,9 @@ Gatsby plugin for react-native-web
 ===================================
 
 
-This permits to share components between your mobile app and your Gatsby website.
+Share components between your React Native mobile app and your Gatsby static website.
 
-This plugin:
-- add react-native-web babel plugin
-- support Gatsby SSR for react-native-web
-- extract critical react-native-web StyleSheet CSS during SSR and add it to page
-
-
-Check the [online demo](https://gatsby-rnw.now.sh/)!
-
+Check the [online demo](https://gatsby-rnw.now.sh/) and its [code](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-react-native-web)
 
 
 # Install
@@ -26,18 +19,36 @@ or
 It is recommended to use these versions:
 
 ```
-"gatsby": "^1.0.0",
+"gatsby-plugin-react-native-web": "^0.3.0",
+"gatsby": "^1.9.255",
 "react": "^16.3.0",
 "react-dom": "^16.3.0"
+"react-native-web-": "^0.6.0"
+"babel-plugin-react-native-web-": "^0.6.0"
 ```
 
 You will also need `gatsby-plugin-react-next` for React 16 support.
 
-There is an runnable [example](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-react-native-web) in Gatsby repository, which you can use as a boilerplate if you want.
+Gatsby basic config should look like:
+
+```js 
+module.exports = {
+  siteMetadata: {
+    title: `Gatsby React Native Web plugin example`,
+  },
+  plugins: [
+    `gatsby-plugin-react-next`,
+    `gatsby-plugin-react-native-web`,
+  ],
+}
+```
+
 
 # Example usage
 
-Here is a simple Gatsby page that renders fine:
+You'd better look at the code of the online demo.
+
+Otherwise, here is a simple Gatsby page that renders fine:
 
 ```js 
 import React from 'react'
@@ -70,4 +81,11 @@ export default IndexPage
 
 ![image](https://camo.githubusercontent.com/58ec39b3966cdefb241b90fb4643ad8aa7b971b2/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f445844575f715058304149534148532e6a70673a6c61726765)
 
+
+
+# How does it work
+
+- add react-native-web babel plugin
+- support Gatsby SSR for react-native-web
+- extract critical react-native-web StyleSheet CSS during SSR and add it to page
 
