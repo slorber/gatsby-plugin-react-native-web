@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-react-native-web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Gatsby plugin to support react-native-web rendering",
   "keywords": [
     "gatsby",
@@ -22,20 +22,20 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
-    "react-native-web": "^0.6.0"
+    "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-plugin-react-native-web": "^0.6.0"
+    "babel-plugin-react-native-web": "^0.6.1"
   },
   "peerDependencies": {
-    "gatsby": "^1.9.251",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "gatsby": "^1.9.255",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-native-web": "^0.6.1"
   }
 }
 
