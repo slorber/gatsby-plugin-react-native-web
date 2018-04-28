@@ -1,7 +1,7 @@
 import React from "react"
 import {AppRegistry} from 'react-native'
 
-exports.getRenderer = () => {
+exports.replaceHydrateFunction = () => {
   return (element, container, callback) => {
     class Root extends React.Component {
       render() {
