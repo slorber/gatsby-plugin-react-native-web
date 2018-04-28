@@ -6,6 +6,7 @@ Share components between your React Native mobile app and your Gatsby static web
 
 Check the [online demo](https://gatsby-rnw.now.sh/) and its [code](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-react-native-web)
 
+![online demo screenshot](https://pbs.twimg.com/media/Db4PTPKW0AAVPl8.jpg)
 
 # Install
 
