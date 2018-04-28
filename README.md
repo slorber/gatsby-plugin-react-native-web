@@ -9,8 +9,8 @@ This plugin:
 - support Gatsby SSR for react-native-web
 - extract critical react-native-web StyleSheet CSS during SSR and add it to page
 
-It is similar to other plugins (glamor/styled-components...)
 
+Check the [online demo](https://gatsby-rnw.now.sh/)!
 
 
 
@@ -22,15 +22,13 @@ or
 
 `yarn add gatsby-plugin-react-native-web`
 
-For now, stay on version 0.1.2 as 0.2.x need a PR on Gatsby to be merged.
-
 
 It is recommended to use these versions:
 
 ```
 "gatsby": "^1.0.0",
-"react": "^16.2.0",
-"react-dom": "^16.2.0"
+"react": "^16.3.0",
+"react-dom": "^16.3.0"
 ```
 
 You will also need `gatsby-plugin-react-next` for React 16 support.
@@ -39,7 +37,7 @@ There is an runnable [example](https://github.com/gatsbyjs/gatsby/tree/master/ex
 
 # Example usage
 
-Here is a Gatsby page that renders fine:
+Here is a simple Gatsby page that renders fine:
 
 ```js 
 import React from 'react'
