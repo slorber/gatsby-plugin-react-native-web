@@ -11,7 +11,7 @@ Check the [online demo](https://gatsby-rnw.now.sh/) and its [code](https://githu
 
 `npm install --save gatsby-plugin-react-native-web`
 
-or 
+or
 
 `yarn add gatsby-plugin-react-native-web`
 
@@ -22,16 +22,16 @@ It is recommended to use these versions:
 "gatsby-plugin-react-native-web": "^0.3.0",
 "gatsby": "^1.9.255",
 "react": "^16.3.0",
-"react-dom": "^16.3.0"
-"react-native-web-": "^0.6.0"
-"babel-plugin-react-native-web-": "^0.6.0"
+"react-dom": "^16.3.0",
+"react-native-web": "^0.6.0",
+"babel-plugin-react-native-web": "^0.6.0",
 ```
 
 You will also need `gatsby-plugin-react-next` for React 16 support.
 
 Gatsby basic config should look like:
 
-```js 
+```js
 module.exports = {
   siteMetadata: {
     title: `Gatsby React Native Web plugin example`,
@@ -50,7 +50,7 @@ You'd better look at the code of the online demo.
 
 Otherwise, here is a simple Gatsby page that renders fine:
 
-```js 
+```js
 import React from 'react'
 import Link from 'gatsby-link'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
