@@ -32,7 +32,7 @@
     "babel-plugin-react-native-web": "^0.6.1"
   },
   "peerDependencies": {
-    "gatsby": "^1.9.255",
+    "gatsby": "^2.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-native-web": "^0.6.1"
