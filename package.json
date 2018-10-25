@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-react-native-web",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Gatsby plugin to support react-native-web rendering",
   "keywords": [
     "gatsby",
@@ -32,10 +32,9 @@
     "babel-plugin-react-native-web": "^0.6.1"
   },
   "peerDependencies": {
-    "gatsby": "^1.9.255",
+    "gatsby": "^2.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-native-web": "^0.6.1"
   }
 }
-
