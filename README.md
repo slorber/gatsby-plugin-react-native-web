@@ -16,6 +16,11 @@ or
 
 `yarn add gatsby-plugin-react-native-web`
 
+# Gatsby 2
+
+Try the alpha releases `2.0.0-alpha.0` and above
+
+# Gatsby 1
 
 It is recommended to use these versions:
 
