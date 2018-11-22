@@ -14,7 +14,7 @@ or
 
 # Gatsby 2
 
-Try the alpha releases `2.0.0-alpha.0` and above
+Try the alpha releases `2.0.0-alpha.0` and above and please report [here](https://github.com/slorber/gatsby-plugin-react-native-web) if it works fine for you.
 
 # Gatsby 1
 
