@@ -16,7 +16,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     '.ts',
     '.web.tsx',
     '.tsx',
-    'web.jsx',
+    '.web.jsx',
     '.jsx',
     '.web.wasm',
     '.wasm',
