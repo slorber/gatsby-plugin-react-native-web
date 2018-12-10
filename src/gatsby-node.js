@@ -1,3 +1,5 @@
+const merge = require('webpack-merge')
+
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: `babel-plugin-react-native-web`,
