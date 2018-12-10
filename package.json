@@ -29,7 +29,8 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-plugin-react-native-web": "^0.6.1"
+    "babel-plugin-react-native-web": "^0.6.1",
+    "webpack-merge": "^4.1.5"
   },
   "peerDependencies": {
     "gatsby": "^2.0.0",
