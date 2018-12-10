@@ -14,11 +14,17 @@ or
 
 # Gatsby 2
 
-Try the alpha releases `2.0.0-alpha.0` and above and please report [here](https://github.com/slorber/gatsby-plugin-react-native-web) if it works fine for you.
+Use the 2.x branch
+
+`yarn add gatsby-plugin-react-native-web@2.0.0-beta.0`
+
+Please report [here](https://github.com/slorber/gatsby-plugin-react-native-web) if it works fine for you, or not.
+
+You should NOT use `gatsby-plugin-react-next` for Gatsby 2
 
 # Gatsby 1
 
-It is recommended to use these versions:
+These versions have been tested together and work correctly:
 
 ```
 "gatsby-plugin-react-native-web": "^0.3.0",
@@ -29,15 +35,12 @@ It is recommended to use these versions:
 "babel-plugin-react-native-web": "^0.6.0",
 ```
 
-You will also need `gatsby-plugin-react-next` for React 16 support.
+You need to use `gatsby-plugin-react-next` for React 16 support.
 
 Gatsby basic config should look like:
 
 ```js
 module.exports = {
-  siteMetadata: {
-    title: `Gatsby React Native Web plugin example`,
-  },
   plugins: [
     `gatsby-plugin-react-next`,
     `gatsby-plugin-react-native-web`,
