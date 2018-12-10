@@ -13,17 +13,12 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     resolve: {
       extensions: [
         '.web.mjs',
-        '.mjs',
         '.web.js',
-        '.js',
-        '.web.ts',
-        '.ts',
-        '.web.tsx',
-        '.tsx',
         '.web.jsx',
-        '.jsx',
         '.web.wasm',
-        '.wasm',
+        '.web.json',
+        '.web.ts',
+        '.web.tsx',
       ],
       alias: {
         'react-native': 'react-native-web',
