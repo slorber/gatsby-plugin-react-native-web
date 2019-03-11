@@ -239,7 +239,6 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
 
 export default class TodosPage extends React.Component<any> {
   render() {
-    console.log('TodosPage', this.props)
     let content = null
     // @ts-ignore
     if (global.window) {
