@@ -1,0 +1,9 @@
+{
+  "schema": {
+    "request": {
+      "url": "https://34p241l2r1.sse.codesandbox.io/",
+      "method": "POST",
+      "postIntrospectionQuery": true
+    }
+  }
+}
