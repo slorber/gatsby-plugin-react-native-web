@@ -239,7 +239,22 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
 
 export default class TodosPage extends React.Component<any> {
   render() {
-    const queryString = getQueryString(this.props.location.search as string)
+    console.log('TodosPage', this.props)
+    let content = null
+    // @ts-ignore
+    if (global.window) {
+      const queryString = getQueryString(this.props.location.search as string)
+      content = (
+        <>
+          <View style={{ padding: 20 }}>
+            <TodosFilter queryString={queryString} />
+          </View>
+          <View style={{ padding: 20 }}>
+            <TodosQuery queryString={queryString} />
+          </View>
+        </>
+      )
+    }
     return (
       <MainLayout>
         <View
@@ -255,12 +270,7 @@ export default class TodosPage extends React.Component<any> {
           <View style={{ padding: 20 }}>
             <Text>Todos page</Text>
           </View>
-          <View style={{ padding: 20 }}>
-            <TodosFilter queryString={queryString} />
-          </View>
-          <View style={{ padding: 20 }}>
-            <TodosQuery queryString={queryString} />
-          </View>
+          {content}
         </View>
       </MainLayout>
     )

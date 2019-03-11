@@ -15,6 +15,7 @@
     "apollo:codegen:watch": "yarn apollo:codegen --watch"
   },
   "dependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
     "@types/node": "^10.3.1",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.6",
@@ -25,6 +26,7 @@
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
     "gatsby-plugin-typescript": "^2.0.0",
     "gatsby-plugin-typography": "^2.2.0",
+    "isomorphic-fetch": "^2.2.1",
     "query-string": "^6.3.0",
     "react": "^16.4.0",
     "react-apollo": "^2.5.2",
