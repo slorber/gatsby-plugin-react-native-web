@@ -8,7 +8,7 @@ import {
   GET_TODOS,
   GET_TODOS_todos,
   GET_TODOSVariables,
-} from './__generated__/GET_TODOS'
+} from '../__apollo_codegen__/GET_TODOS'
 import { navigate } from 'gatsby'
 import { parse, stringify } from 'query-string'
 

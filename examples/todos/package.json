@@ -10,7 +10,8 @@
     "build": "gatsby build",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project .",
-    "apollo:codegen": "apollo client:codegen --target=typescript --addTypename --globalTypesFile ./src/__generated__/AppApolloGlobalTypes.ts",
+    "apollo:codegen:LEGACY": "apollo client:codegen --target=typescript --addTypename --globalTypesFile ./src/__generated__/AppApolloGlobalTypes.ts",
+    "apollo:codegen": "apollo client:codegen --target=typescript --addTypename --outputFlat src/__apollo_codegen__",
     "apollo:codegen:watch": "yarn apollo:codegen --watch"
   },
   "dependencies": {
