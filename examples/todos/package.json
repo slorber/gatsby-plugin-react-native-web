@@ -38,6 +38,7 @@
     "typography-theme-bootstrap": "^0.16.7"
   },
   "devDependencies": {
+    "babel-plugin-react-native-web": "^0.10.1",
     "prettier": "^1.16.4",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
