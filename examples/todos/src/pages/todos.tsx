@@ -295,7 +295,7 @@ export default class TodosPage extends React.Component<any> {
           <View style={{ padding: 10 }}>
             <TodosFilter queryString={queryString} />
           </View>
-          {isBrowser && <TodosQuery queryString={queryString} />}
+          <TodosQuery queryString={queryString} />
         </View>
       </MainLayout>
     )
