@@ -33,13 +33,13 @@
     "react-apollo": "^2.5.2",
     "react-dom": "^16.4.0",
     "react-native": "^0.55",
-    "react-native-web": "^0.11.0",
+    "react-native-web": "^0.10.0",
     "react-typography": "^0.16.13",
     "typography": "^0.16.17",
     "typography-theme-bootstrap": "^0.16.7"
   },
   "devDependencies": {
-    "babel-plugin-react-native-web": "^0.11.0",
+    "babel-plugin-react-native-web": "^0.10.0",
     "concurrently": "^4.1.0",
     "prettier": "^1.16.4",
     "tslint": "^5.14.0",

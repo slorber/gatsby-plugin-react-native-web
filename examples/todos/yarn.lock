@@ -2485,10 +2485,10 @@ babel-plugin-macros@^2.4.2:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
-babel-plugin-react-native-web@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.11.0.tgz#835e544237a2ed89beecafbd757732812cc5631e"
-  integrity sha512-UgHNucpn44XkcYdbYkphWlUGRXZEl4PvLwpeOmmAUQuqlL8wOqBCV2grglhAsSlYkbzBdDgOEviBNYlebXiyng==
+babel-plugin-react-native-web@^0.10.0:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.10.1.tgz#bc4f7e3159bffb7de1adcdebb9f843fab405a3fd"
+  integrity sha512-Qx+Yztw5Z2ikM10/nslpUlBd+1AKx6hzH3wR5CKCkwnsvxRPA/wgDJlyHtVZTxCxxmsPIrDmlSiVB1HIbKDLJw==
 
 babel-plugin-react-transform@^3.0.0:
   version "3.0.0"
@@ -10543,10 +10543,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-native-web@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.11.0.tgz#e89f4393c369471a35740a25d391a55cd1904db9"
-  integrity sha512-AbWtbyq9fb1mZDY71ziNbA5b+7JA06wmgUjq3pXTriXPsrMOrSfYpxOWcYzLN76Tcjpl2gRyzjBhGZMXWTXbVQ==
+react-native-web@^0.10.0:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.10.1.tgz#94a8a4b0a18fd03cf5d75fb41f87bd8c3ded753f"
+  integrity sha512-Mpjx7nFPyH3W/BSaEqLWlG0rqqSfG/St+ri/heRXRyZZOl4IoS/2GDhKDJinojHUCgm2BdmvNqN53zWupiU6eQ==
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.6.2"
