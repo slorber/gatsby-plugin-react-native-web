@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Text, View } from 'react-native'
+import { ActivityIndicator, Linking, Text, View } from 'react-native'
 import MainLayout from '../layouts/MainLayout'
 
 import { gql } from 'apollo-boost'
@@ -152,7 +152,11 @@ const Todos = ({
   todosCount,
   queryString,
 }: GET_TODOS & HasQueryString) => (
-  <View style={{ padding: 10 }}>
+  <View style={{
+    flexGrow: 1,
+    alignItems: "center",
+    justifyContent: "space-around",
+  }}>
     <View style={{ padding: 10 }}>
       {todos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
@@ -165,26 +169,59 @@ const Todos = ({
 )
 
 const TodosQuery = ({ queryString }: HasQueryString) => (
-  <Query<GET_TODOS, GET_TODOSVariables>
-    query={GetTodos}
-    variables={{
-      filter: { checked: queryString.checked },
-      pagination: {
-        skip: queryString.skip,
-        limit: queryString.limit,
-      },
+  <View
+    style={{
+      flexGrow: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 10,
     }}
   >
-    {({ loading, error, data }) => {
-      if (loading) {
-        return <Text>Loading...</Text>
-      }
-      if (error) {
-        return <Text>Error :(</Text>
-      }
-      return <Todos queryString={queryString} {...data!} />
-    }}
-  </Query>
+    <Query<GET_TODOS, GET_TODOSVariables>
+      query={GetTodos}
+      variables={{
+        filter: { checked: queryString.checked },
+        pagination: {
+          skip: queryString.skip,
+          limit: queryString.limit,
+        },
+      }}
+    >
+      {({ loading, error, data }) => {
+        if (loading) {
+          return (
+            <View style={{ padding: 20 }}>
+              <ActivityIndicator size="large" />
+            </View>
+          )
+        }
+        if (error) {
+          return (
+            <View style={{ padding: 20 }}>
+              <Text style={{ color: 'red', fontSize: 20 }}>Error :(</Text>
+              <Text style={{ color: 'red' }}>
+                Maybe the CodeSandbox GraphQL server is offline.
+              </Text>
+              <Text
+                style={{ color: 'red', textDecorationLine: 'underline' }}
+                onPress={() =>
+                  Linking.openURL('https://codesandbox.io/s/34p241l2r1')
+                }
+              >
+                Open it to reactivate it
+              </Text>
+            </View>
+          )
+        }
+        return (
+          <View style={{ padding: 10,       flexGrow: 1,
+          }}>
+            <Todos queryString={queryString} {...data!} />
+          </View>
+        )
+      }}
+    </Query>
+  </View>
 )
 
 const TodosFilter = ({ queryString }: HasQueryString) => (
@@ -239,37 +276,26 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
 
 export default class TodosPage extends React.Component<any> {
   render() {
-    let content = null
     // @ts-ignore
-    if (global.window) {
-      const queryString = getQueryString(this.props.location.search as string)
-      content = (
-        <>
-          <View style={{ padding: 20 }}>
-            <TodosFilter queryString={queryString} />
-          </View>
-          <View style={{ padding: 20 }}>
-            <TodosQuery queryString={queryString} />
-          </View>
-        </>
-      )
-    }
+    const isBrowser = !!global.window
+    const queryString = getQueryString(this.props.location.search as string)
     return (
       <MainLayout>
         <View
           style={{
-            margin: `0 auto`,
-            marginBottom: 15,
-            marginTop: 15,
-            maxWidth: 650,
-            paddingLeft: 15,
-            paddingRight: 15,
+            flex: 1,
+            maxWidth: 800,
+            alignItems: 'center',
+            padding: 30,
           }}
         >
-          <View style={{ padding: 20 }}>
-            <Text>Todos page</Text>
+          <View style={{ padding: 10 }}>
+            <Text style={{ fontSize: 30 }}>Todos page</Text>
           </View>
-          {content}
+          <View style={{ padding: 10 }}>
+            <TodosFilter queryString={queryString} />
+          </View>
+          {isBrowser && <TodosQuery queryString={queryString} />}
         </View>
       </MainLayout>
     )

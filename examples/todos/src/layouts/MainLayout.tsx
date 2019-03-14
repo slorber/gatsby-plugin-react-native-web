@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Linking, Text, View } from 'react-native'
 import { Link } from 'gatsby'
 import { AppApolloProvider } from '../AppApolloClient'
-
+import './MainLayout.css'
 
 const Menu = () => (
   <View
@@ -39,12 +39,13 @@ const Layout: React.SFC = ({ children }) => (
         borderBottomColor: 'black',
       }}
     >
-      <Menu/>
+      <Menu />
     </View>
     <View
       style={{
         flex: 1,
         width: '100%',
+        alignItems: 'center',
       }}
     >
       {children}
@@ -54,11 +55,8 @@ const Layout: React.SFC = ({ children }) => (
 
 const MainLayout: React.SFC = ({ children }) => (
   <AppApolloProvider>
-    <Layout>
-      {children}
-    </Layout>
+    <Layout>{children}</Layout>
   </AppApolloProvider>
 )
-
 
 export default MainLayout
