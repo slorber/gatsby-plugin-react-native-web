@@ -125,7 +125,7 @@ const TodosPagination = ({
       onPress={() =>
         updateQueryString({
           ...queryString,
-          skip: Math.min(0, queryString.skip - DefaultLimit),
+          skip: Math.max(0, queryString.skip - DefaultLimit),
         })
       }
     >
