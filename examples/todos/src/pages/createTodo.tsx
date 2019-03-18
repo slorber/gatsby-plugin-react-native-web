@@ -1,24 +1,34 @@
-import * as React from "react"
-import {Text, View} from "react-native"
-import MainLayout from "../layouts/MainLayout"
+import * as React from 'react'
+import { Text, View } from 'react-native'
+import MainLayout from '../layouts/MainLayout'
+import { Button, TextInput } from 'react-native-paper'
 
+export default class CreateTodo extends React.Component<
+  {},
+  { newTodo: string }
+> {
+  state = { newTodo: '' }
 
-
-export default class CreateTodo extends React.Component {
-    render() {
-        return (
-            <MainLayout>
-                <View style={{
-                    margin: `0 auto`,
-                    marginBottom: 15,
-                    marginTop: 15,
-                    maxWidth: 650,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                }}>
-                    <Text>CreateTodo page</Text>
-                </View>
-            </MainLayout>
-        )
-    }
+  render() {
+    return (
+      <MainLayout>
+        <Text style={{ fontSize: 30 }}>Create todo</Text>
+        <TextInput
+          style={{ marginTop: 30 }}
+          label="What to do?"
+          value={this.state.newTodo}
+          onChangeText={newTodo => this.setState({ newTodo })}
+        />
+        <Button
+          style={{ marginTop: 30, alignSelf: 'flex-end' }}
+          mode="contained"
+          onPress={() => {
+            // TODO
+          }}
+        >
+          Create
+        </Button>
+      </MainLayout>
+    )
+  }
 }

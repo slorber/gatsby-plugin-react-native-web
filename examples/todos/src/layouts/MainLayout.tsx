@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import { AppApolloProvider } from '../AppApolloClient'
 import { Appbar, Provider as PaperProvider } from 'react-native-paper'
 
-const Layout: React.SFC = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
   <View
     style={{
       flex: 1,
@@ -57,12 +57,17 @@ const Layout: React.SFC = ({ children }) => (
     </View>
     <View
       style={{
-        flex: 1,
-        width: '100%',
         alignItems: 'center',
+        padding: 30,
       }}
     >
-      {children}
+      <View style={{
+        minWidth: 400,
+        maxWidth: 1000,
+        width: '100%',
+      }}>
+        {children}
+      </View>
     </View>
   </View>
 )
@@ -80,7 +85,7 @@ const MaterialIconsWebStyle = Platform.OS === 'web' ? (
 /* tslint:enable */
 
 
-const MainLayout: React.SFC = ({ children }) => (
+const MainLayout: React.FC = ({ children }) => (
   <AppApolloProvider>
     <PaperProvider>
       {MaterialIconsWebStyle}

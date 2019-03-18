@@ -20,32 +20,43 @@ interface IndexPageProps {
 }
 
 export const pageQuery = graphql`
-    query IndexQuery {
-        site {
-            siteMetadata {
-                siteName
-            }
-        }
+  query IndexQuery {
+    site {
+      siteMetadata {
+        siteName
+      }
     }
+  }
 `
 
 const TodoStats = gql`
-    query TODO_STATS {
-        allTodos: todosCount(filter: { checked: null })
-        checkedTodos: todosCount(filter: { checked: true })
-        uncheckedTodos: todosCount(filter: { checked: false })
-    }
+  query TODO_STATS {
+    allTodos: todosCount(filter: { checked: null })
+    checkedTodos: todosCount(filter: { checked: true })
+    uncheckedTodos: todosCount(filter: { checked: false })
+  }
 `
 
-const TodoStatCard = ({ label, count, icon }: { label: string; count: number, icon: string }) => (
+const TodoStatCard = ({
+  label,
+  count,
+  icon,
+}: {
+  label: string
+  count: number
+  icon: string
+}) => (
   <Surface style={{ margin: 20, elevation: 8 }}>
     <Card style={{ minWidth: 250 }}>
-      <Card.Title title={label} subtitle={count} left={(props) => <Avatar.Icon {...props} icon={icon}/>}/>
-      <Card.Cover source={{ uri: 'https://picsum.photos/700' }}/>
+      <Card.Title
+        title={label}
+        subtitle={count}
+        left={props => <Avatar.Icon {...props} icon={icon} />}
+      />
+      <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
     </Card>
   </Surface>
 )
-
 
 /*
 const TodoStatCard = ({ label, count }: { label: string; count: number }) => (
@@ -75,7 +86,7 @@ const TodoStatsQuery = () => (
       if (loading) {
         return (
           <View style={{ padding: 20 }}>
-            <ActivityIndicator size="large"/>
+            <ActivityIndicator size="large" />
           </View>
         )
       }
@@ -106,9 +117,21 @@ const TodoStatsQuery = () => (
             flexWrap: 'wrap',
           }}
         >
-          <TodoStatCard label="All todos" count={data!.allTodos} icon="indeterminate-check-box"/>
-          <TodoStatCard label="Checked todos" count={data!.checkedTodos} icon="check-box"/>
-          <TodoStatCard label="Unchecked todos" count={data!.uncheckedTodos} icon="check-box-outline-blank"/>
+          <TodoStatCard
+            label="All todos"
+            count={data!.allTodos}
+            icon="indeterminate-check-box"
+          />
+          <TodoStatCard
+            label="Checked todos"
+            count={data!.checkedTodos}
+            icon="check-box"
+          />
+          <TodoStatCard
+            label="Unchecked todos"
+            count={data!.uncheckedTodos}
+            icon="check-box-outline-blank"
+          />
         </View>
       )
     }}
@@ -119,30 +142,24 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
   render() {
     return (
       <MainLayout>
-        <View
+        <Text
           style={{
-            margin: `
-0
-auto`,
-            marginBottom: 15,
-            marginTop: 15,
-            maxWidth: 650,
-            paddingLeft: 15,
-            paddingRight: 15,
+            marginTop: 20,
+            fontSize: 30,
+            fontWeight: 'bold',
+            alignSelf: 'center'
           }}
         >
-          <Text>This is an example of Gatsby using react-native-web</Text>
-          <Text
-            style={{ marginTop: 10, fontWeight: 'bold' }}
-            accessibilityRole="link"
-            href="https://github.com/slorber/gatsby-plugin-react-native-web/"
-          >
-            Check https://github.com/slorber/gatsby-plugin-react-native-web
-          </Text>
-        </View>
-        <View>
-          <TodoStatsQuery/>
-        </View>
+          This is an example of Gatsby using react-native-web
+        </Text>
+        <Text
+          style={{ marginTop: 20, fontWeight: 'bold', alignSelf: 'center' }}
+          accessibilityRole="link"
+          href="https://github.com/slorber/gatsby-plugin-react-native-web/"
+        >
+          Check https://github.com/slorber/gatsby-plugin-react-native-web
+        </Text>
+        <TodoStatsQuery />
       </MainLayout>
     )
   }

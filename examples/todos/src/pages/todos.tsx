@@ -213,15 +213,6 @@ export default class TodosPage extends React.Component<any> {
     const queryString = getQueryString(this.props.location.search as string)
     return (
       <MainLayout>
-        <View
-          style={{
-            alignItems: 'center',
-            padding: 30,
-            minWidth: 400,
-            maxWidth: 1000,
-            width: '100%',
-          }}
-        >
           <View style={{ padding: 10 }}>
             <Text style={{ fontSize: 30 }}>Todos page</Text>
           </View>
@@ -229,7 +220,6 @@ export default class TodosPage extends React.Component<any> {
             <TodosFilter queryString={queryString}/>
           </View>
           <TodosQuery queryString={queryString}/>
-        </View>
       </MainLayout>
     )
   }
