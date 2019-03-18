@@ -3,10 +3,8 @@ import { Text, View } from 'react-native'
 import MainLayout from '../layouts/MainLayout'
 import { Button, TextInput } from 'react-native-paper'
 
-export default class CreateTodo extends React.Component<
-  {},
-  { newTodo: string }
-> {
+export default class CreateTodo extends React.Component<{},
+  { newTodo: string }> {
   state = { newTodo: '' }
 
   render() {

@@ -56,7 +56,7 @@ const GetTodos = gql`
             text
             checked
         }
-        todosCount
+        todosCount(filter: $filter)
     }
 `
 
@@ -107,56 +107,58 @@ const TodosTable = ({
   )
 }
 
-const TodosQuery = ({ queryString }: HasQueryString) => (
-  <View
-    style={{
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 10,
-      width: '100%',
-    }}
-  >
-    <Query<GET_TODOS, GET_TODOSVariables>
-      query={GetTodos}
-      variables={{
-        filter: { checked: queryString.checked },
-        pagination: {
-          skip: (queryString.page - 1) * PageSize,
-          limit: PageSize,
-        },
+const TodosQuery = ({ queryString }: HasQueryString) => {
+  return (
+    <View
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+        width: '100%',
       }}
     >
-      {({ loading, error, data }) => {
-        if (loading) {
-          return (
-            <View style={{ padding: 20 }}>
-              <ActivityIndicator size="large"/>
-            </View>
-          )
-        }
-        if (error) {
-          return (
-            <View style={{ padding: 20 }}>
-              <Text style={{ color: 'red', fontSize: 20 }}>Error :(</Text>
-              <Text style={{ color: 'red' }}>
-                Maybe the CodeSandbox GraphQL server is offline.
-              </Text>
-              <Text
-                style={{ color: 'red', textDecorationLine: 'underline' }}
-                onPress={() =>
-                  Linking.openURL('https://codesandbox.io/s/34p241l2r1')
-                }
-              >
-                Open it to reactivate it
-              </Text>
-            </View>
-          )
-        }
-        return <TodosTable queryString={queryString} {...data!} />
-      }}
-    </Query>
-  </View>
-)
+      <Query<GET_TODOS, GET_TODOSVariables>
+        query={GetTodos}
+        variables={{
+          filter: { checked: queryString.checked },
+          pagination: {
+            skip: (queryString.page - 1) * PageSize,
+            limit: PageSize,
+          },
+        }}
+      >
+        {({ loading, error, data }) => {
+          if (loading) {
+            return (
+              <View style={{ padding: 20 }}>
+                <ActivityIndicator size="large"/>
+              </View>
+            )
+          }
+          if (error) {
+            return (
+              <View style={{ padding: 20 }}>
+                <Text style={{ color: 'red', fontSize: 20 }}>Error :(</Text>
+                <Text style={{ color: 'red' }}>
+                  Maybe the CodeSandbox GraphQL server is offline.
+                </Text>
+                <Text
+                  style={{ color: 'red', textDecorationLine: 'underline' }}
+                  onPress={() =>
+                    Linking.openURL('https://codesandbox.io/s/34p241l2r1')
+                  }
+                >
+                  Open it to reactivate it
+                </Text>
+              </View>
+            )
+          }
+          return <TodosTable queryString={queryString} {...data!} />
+        }}
+      </Query>
+    </View>
+  )
+}
 
 const TodosFilter = ({ queryString }: HasQueryString) => (
   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -213,13 +215,13 @@ export default class TodosPage extends React.Component<any> {
     const queryString = getQueryString(this.props.location.search as string)
     return (
       <MainLayout>
-          <View style={{ padding: 10 }}>
-            <Text style={{ fontSize: 30 }}>Todos page</Text>
-          </View>
-          <View style={{ padding: 10 }}>
-            <TodosFilter queryString={queryString}/>
-          </View>
-          <TodosQuery queryString={queryString}/>
+        <View style={{ padding: 10 }}>
+          <Text style={{ fontSize: 30 }}>Todos page</Text>
+        </View>
+        <View style={{ padding: 10 }}>
+          <TodosFilter queryString={queryString}/>
+        </View>
+        <TodosQuery queryString={queryString}/>
       </MainLayout>
     )
   }

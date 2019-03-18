@@ -20,28 +20,28 @@ interface IndexPageProps {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        siteName
-      }
+    query IndexQuery {
+        site {
+            siteMetadata {
+                siteName
+            }
+        }
     }
-  }
 `
 
 const TodoStats = gql`
-  query TODO_STATS {
-    allTodos: todosCount(filter: { checked: null })
-    checkedTodos: todosCount(filter: { checked: true })
-    uncheckedTodos: todosCount(filter: { checked: false })
-  }
+    query TODO_STATS {
+        allTodos: todosCount(filter: { checked: null })
+        checkedTodos: todosCount(filter: { checked: true })
+        uncheckedTodos: todosCount(filter: { checked: false })
+    }
 `
 
 const TodoStatCard = ({
-  label,
-  count,
-  icon,
-}: {
+                        label,
+                        count,
+                        icon,
+                      }: {
   label: string
   count: number
   icon: string
@@ -51,9 +51,9 @@ const TodoStatCard = ({
       <Card.Title
         title={label}
         subtitle={count}
-        left={props => <Avatar.Icon {...props} icon={icon} />}
+        left={props => <Avatar.Icon {...props} icon={icon}/>}
       />
-      <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+      <Card.Cover source={{ uri: 'https://picsum.photos/700' }}/>
     </Card>
   </Surface>
 )
@@ -64,7 +64,7 @@ const TodoStatsQuery = () => (
       if (loading) {
         return (
           <View style={{ padding: 20 }}>
-            <ActivityIndicator size="large" />
+            <ActivityIndicator size="large"/>
           </View>
         )
       }
@@ -125,7 +125,7 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
             marginTop: 20,
             fontSize: 30,
             fontWeight: 'bold',
-            alignSelf: 'center'
+            alignSelf: 'center',
           }}
         >
           This is an example of Gatsby using react-native-web
@@ -137,7 +137,7 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
         >
           Check https://github.com/slorber/gatsby-plugin-react-native-web
         </Text>
-        <TodoStatsQuery />
+        <TodoStatsQuery/>
       </MainLayout>
     )
   }
