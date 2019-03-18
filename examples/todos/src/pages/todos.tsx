@@ -1,9 +1,10 @@
 import React from 'react'
 import { ActivityIndicator, Linking, Text, View } from 'react-native'
+import { UPDATE_TODO, UPDATE_TODOVariables } from '../__apollo_codegen__/UPDATE_TODO'
 import MainLayout from '../layouts/MainLayout'
 
 import { gql } from 'apollo-boost'
-import { Query } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import {
   GET_TODOS,
   GET_TODOS_todos,
@@ -55,6 +56,17 @@ const GetTodos = gql`
     }
 `
 
+const UpdateTodo = gql`
+    mutation UPDATE_TODO($id: String!,$text: String!, $checked: Boolean!) {
+        updateTodo(id: $id,text: $text, checked: $checked) {
+            id
+            text
+            checked
+        }
+    }
+`
+
+
 const TodosTable = ({
                       todos,
                       todosCount,
@@ -65,40 +77,58 @@ const TodosTable = ({
   const pageLast = Math.min(todosCount, pageFirst + PageSize)
   const pageLabel = `${pageFirst}-${pageLast} of ${todosCount}`
   return (
-    <DataTable>
-      <DataTable.Header>
-        <DataTable.Title style={{ maxWidth: 200 }}>Id</DataTable.Title>
-        <DataTable.Title>Name</DataTable.Title>
-        <DataTable.Title style={{ maxWidth: 50 }}>Status</DataTable.Title>
-      </DataTable.Header>
+    <Mutation<UPDATE_TODO, UPDATE_TODOVariables>
+      mutation={UpdateTodo}
+    >
+      {(updateTodo, { data }) => (
+        <DataTable>
+          <DataTable.Header>
+            <DataTable.Title style={{ maxWidth: 120 }}>Id</DataTable.Title>
+            <DataTable.Title>Name</DataTable.Title>
+            <DataTable.Title style={{ maxWidth: 50 }}>Status</DataTable.Title>
+          </DataTable.Header>
 
-      {todos.map(todo => (
-        <DataTable.Row key={todo.id}>
-          <DataTable.Cell style={{ maxWidth: 200 }}>{todo.id}</DataTable.Cell>
-          <DataTable.Cell>{todo.text}</DataTable.Cell>
-          <DataTable.Cell style={{ maxWidth: 50 }}>
-            <Checkbox
-              status={todo.checked ? 'checked' : 'unchecked'}
-              onPress={() => {
-                // TODO
-              }}
-            />
-          </DataTable.Cell>
-        </DataTable.Row>
-      ))}
+          {todos.map(todo => (
+            <DataTable.Row key={todo.id}>
+              <DataTable.Cell style={{ maxWidth: 120 }}>{todo.id}</DataTable.Cell>
+              <DataTable.Cell>{todo.text}</DataTable.Cell>
+              <DataTable.Cell style={{ maxWidth: 50 }}>
+                <Checkbox
+                  status={todo.checked ? 'checked' : 'unchecked'}
+                  onPress={() => {
+                    updateTodo({
+                      variables: {
+                        ...todo,
+                        checked: !todo.checked,
+                      },
+                      optimisticResponse: {
+                        updateTodo: {
+                          __typename: 'Todo',
+                          ...todo,
+                          checked: !todo.checked,
+                        },
+                      },
+                    })
+                  }}
+                />
+              </DataTable.Cell>
+            </DataTable.Row>
+          ))}
 
-      <DataTable.Pagination
-        page={queryString.page - 1}
-        numberOfPages={numberOfPages}
-        onPageChange={page => {
-          updateQueryString({
-            ...queryString,
-            page: page + 1,
-          })
-        }}
-        label={pageLabel}
-      />
-    </DataTable>
+          <DataTable.Pagination
+            page={queryString.page - 1}
+            numberOfPages={numberOfPages}
+            onPageChange={page => {
+              updateQueryString({
+                ...queryString,
+                page: page + 1,
+              })
+            }}
+            label={pageLabel}
+          />
+        </DataTable>
+      )}
+    </Mutation>
   )
 }
 
@@ -113,6 +143,7 @@ const TodosQuery = ({ queryString }: HasQueryString) => {
       }}
     >
       <Query<GET_TODOS, GET_TODOSVariables>
+        fetchPolicy="cache-and-network"
         query={GetTodos}
         variables={{
           filter: { checked: queryString.checked },
