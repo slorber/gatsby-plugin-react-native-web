@@ -13,7 +13,7 @@ export default class CreateTodo extends React.Component<{},
         <Text style={{ fontSize: 30 }}>Create todo</Text>
         <TextInput
           style={{ marginTop: 30 }}
-          label="What to do?"
+          label="What to do? (todo)"
           value={this.state.newTodo}
           onChangeText={newTodo => this.setState({ newTodo })}
         />
@@ -21,7 +21,7 @@ export default class CreateTodo extends React.Component<{},
           style={{ marginTop: 30, alignSelf: 'flex-end' }}
           mode="contained"
           onPress={() => {
-            // TODO
+            alert("todo")
           }}
         >
           Create
