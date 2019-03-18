@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ActivityIndicator, Linking, Text, View } from 'react-native'
 import MainLayout from '../layouts/MainLayout'
 
@@ -12,11 +12,6 @@ import {
 import { navigate } from 'gatsby'
 import { parse, stringify } from 'query-string'
 import { Checkbox, DataTable } from 'react-native-paper'
-
-interface TodosQueryString {
-  checked: boolean | null
-  page: number
-}
 
 interface HasQueryString {
   queryString: TodosQueryString

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Text, View } from 'react-native'
 import MainLayout from '../layouts/MainLayout'
 import { Button, TextInput } from 'react-native-paper'

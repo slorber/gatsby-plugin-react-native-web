@@ -1,62 +1,50 @@
 import { gql } from 'apollo-boost'
-import { graphql } from 'gatsby'
-import * as React from 'react'
+import { Link } from 'gatsby'
+import React, { ComponentType } from 'react'
 import { Query } from 'react-apollo'
 import { ActivityIndicator, Linking, Text, View } from 'react-native'
 import { TODO_STATS } from '../__apollo_codegen__/TODO_STATS'
 import MainLayout from '../layouts/MainLayout'
 import { Avatar, Card, Title, Paragraph, Surface } from 'react-native-paper'
-
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema
-interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        siteName: string
-      }
-    }
-  }
-}
-
-export const pageQuery = graphql`
-    query IndexQuery {
-        site {
-            siteMetadata {
-                siteName
-            }
-        }
-    }
-`
+import { stringify } from 'query-string'
 
 const TodoStats = gql`
-    query TODO_STATS {
-        allTodos: todosCount(filter: { checked: null })
-        checkedTodos: todosCount(filter: { checked: true })
-        uncheckedTodos: todosCount(filter: { checked: false })
-    }
+  query TODO_STATS {
+    allTodos: todosCount(filter: { checked: null })
+    checkedTodos: todosCount(filter: { checked: true })
+    uncheckedTodos: todosCount(filter: { checked: false })
+  }
 `
 
 const TodoStatCard = ({
-                        label,
-                        count,
-                        icon,
-                      }: {
+  label,
+  count,
+  icon,
+  queryString,
+}: {
   label: string
   count: number
   icon: string
-}) => (
-  <Surface style={{ margin: 20, elevation: 8 }}>
-    <Card style={{ minWidth: 250 }}>
-      <Card.Title
-        title={label}
-        subtitle={count}
-        left={props => <Avatar.Icon {...props} icon={icon}/>}
-      />
-      <Card.Cover source={{ uri: 'https://picsum.photos/700' }}/>
-    </Card>
-  </Surface>
-)
+  queryString?: Partial<TodosQueryString>
+}) => {
+  const linkUrl = `/todos${queryString ? '?' + stringify(queryString) : ''}`
+  return (
+    <View style={{ margin: 20 }}>
+      <Surface style={{ elevation: 8 }}>
+        <Link to={linkUrl}>
+          <Card style={{ minWidth: 250 }}>
+            <Card.Title
+              title={label}
+              subtitle={count}
+              left={props => <Avatar.Icon {...props} icon={icon} />}
+            />
+            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          </Card>
+        </Link>
+      </Surface>
+    </View>
+  )
+}
 
 const TodoStatsQuery = () => (
   <Query<TODO_STATS> query={TodoStats}>
@@ -64,7 +52,7 @@ const TodoStatsQuery = () => (
       if (loading) {
         return (
           <View style={{ padding: 20 }}>
-            <ActivityIndicator size="large"/>
+            <ActivityIndicator size="large" />
           </View>
         )
       }
@@ -104,11 +92,13 @@ const TodoStatsQuery = () => (
             label="Checked todos"
             count={data!.checkedTodos}
             icon="check-box"
+            queryString={{ checked: true }}
           />
           <TodoStatCard
             label="Unchecked todos"
             count={data!.uncheckedTodos}
             icon="check-box-outline-blank"
+            queryString={{ checked: false }}
           />
         </View>
       )
@@ -116,7 +106,13 @@ const TodoStatsQuery = () => (
   </Query>
 )
 
-export default class IndexPage extends React.Component<IndexPageProps, {}> {
+type TextProps = React.ComponentProps<typeof Text>
+type WebTextProps = TextProps & {
+  href?: string
+}
+const FixedText = Text as ComponentType<WebTextProps>
+
+export default class IndexPage extends React.Component {
   render() {
     return (
       <MainLayout>
@@ -130,14 +126,14 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
         >
           This is an example of Gatsby using react-native-web
         </Text>
-        <Text
+        <FixedText
           style={{ marginTop: 20, fontWeight: 'bold', alignSelf: 'center' }}
           accessibilityRole="link"
           href="https://github.com/slorber/gatsby-plugin-react-native-web/"
         >
           Check https://github.com/slorber/gatsby-plugin-react-native-web
-        </Text>
-        <TodoStatsQuery/>
+        </FixedText>
+        <TodoStatsQuery />
       </MainLayout>
     )
   }
