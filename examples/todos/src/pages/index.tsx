@@ -58,28 +58,6 @@ const TodoStatCard = ({
   </Surface>
 )
 
-/*
-const TodoStatCard = ({ label, count }: { label: string; count: number }) => (
-  <View
-    style={{
-      margin: 20,
-      borderWidth: 2,
-      borderColor: 'black',
-      borderRadius: 5,
-      alignItems: 'center',
-      minWidth: 200,
-    }}
-  >
-    <Text style={{ margin: 10, fontSize: 20 }}>{label}</Text>
-    <Text
-      style={{ margin: 10, fontSize: 30, fontWeight: 'bold', color: 'blue' }}
-    >
-      {count}
-    </Text>
-  </View>
-)
-*/
-
 const TodoStatsQuery = () => (
   <Query<TODO_STATS> query={TodoStats}>
     {({ loading, error, data }) => {
