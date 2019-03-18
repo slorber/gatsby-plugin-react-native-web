@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { ActivityIndicator, Linking, Text, View } from 'react-native'
 import { TODO_STATS } from '../__apollo_codegen__/TODO_STATS'
 import MainLayout from '../layouts/MainLayout'
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper'
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
@@ -36,6 +37,15 @@ const TodoStats = gql`
     }
 `
 
+const TodoStatCard = ({ label, count, icon }: { label: string; count: number, icon: string }) => (
+  <Card style={{ margin: 20, minWidth: 250 }}>
+    <Card.Title title={label} subtitle={count} left={(props) => <Avatar.Icon {...props} icon={icon}/>}/>
+    <Card.Cover source={{ uri: 'https://picsum.photos/700' }}/>
+  </Card>
+)
+
+
+/*
 const TodoStatCard = ({ label, count }: { label: string; count: number }) => (
   <View
     style={{
@@ -55,6 +65,7 @@ const TodoStatCard = ({ label, count }: { label: string; count: number }) => (
     </Text>
   </View>
 )
+*/
 
 const TodoStatsQuery = () => (
   <Query<TODO_STATS> query={TodoStats}>
@@ -90,11 +101,12 @@ const TodoStatsQuery = () => (
             padding: 10,
             flexGrow: 1,
             flexDirection: 'row',
+            flexWrap: 'wrap',
           }}
         >
-          <TodoStatCard label="All todos" count={data!.allTodos}/>
-          <TodoStatCard label="Checked todos" count={data!.checkedTodos}/>
-          <TodoStatCard label="Unchecked todos" count={data!.uncheckedTodos}/>
+          <TodoStatCard label="All todos" count={data!.allTodos} icon="indeterminate-check-box"/>
+          <TodoStatCard label="Checked todos" count={data!.checkedTodos} icon="check-box"/>
+          <TodoStatCard label="Unchecked todos" count={data!.uncheckedTodos} icon="check-box-outline-blank"/>
         </View>
       )
     }}
@@ -107,7 +119,9 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
       <MainLayout>
         <View
           style={{
-            margin: `0 auto`,
+            margin: `
+0
+auto`,
             marginBottom: 15,
             marginTop: 15,
             maxWidth: 650,
