@@ -33,12 +33,15 @@
     "react-apollo": "^2.5.2",
     "react-dom": "^16.4.0",
     "react-native": "^0.55",
+    "react-native-paper": "^2.13.0",
+    "react-native-vector-icons": "^6.4.1",
     "react-native-web": "^0.11.1",
     "react-typography": "^0.16.13",
     "typography": "^0.16.17",
     "typography-theme-bootstrap": "^0.16.7"
   },
   "devDependencies": {
+    "@babel/preset-flow": "^7.0.0",
     "babel-plugin-react-native-web": "^0.11.1",
     "concurrently": "^4.1.0",
     "prettier": "^1.16.4",
