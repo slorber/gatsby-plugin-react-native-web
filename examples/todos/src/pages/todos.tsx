@@ -11,24 +11,18 @@ import {
 } from '../__apollo_codegen__/GET_TODOS'
 import { navigate } from 'gatsby'
 import { parse, stringify } from 'query-string'
+import { Checkbox, DataTable } from 'react-native-paper'
 
 interface TodosQueryString {
   checked: boolean | null
-  skip: number
-  limit: number
+  page: number
 }
 
 interface HasQueryString {
   queryString: TodosQueryString
 }
 
-const DefaultSkip = 0
-const DefaultLimit = 10
-
-const DefaultPagination = {
-  skip: 0,
-  limit: 10,
-}
+const PageSize = 10
 
 const getQueryString = (search: string): TodosQueryString => {
   const parsed = parse(search)
@@ -39,10 +33,7 @@ const getQueryString = (search: string): TodosQueryString => {
         : parsed.checked === 'false'
         ? false
         : null,
-    skip: parsed.skip ? parseInt(parsed.skip as any) : DefaultPagination.skip,
-    limit: parsed.limit
-      ? parseInt(parsed.limit as any)
-      : DefaultPagination.limit,
+    page: parsed.page ? parseInt(parsed.page as any) : 1,
   }
 }
 
@@ -51,130 +42,78 @@ const updateQueryString = (queryString: TodosQueryString): void => {
   if (queryString.checked !== null) {
     obj.checked = queryString.checked
   }
-  if (queryString.skip !== DefaultSkip) {
-    obj.skip = queryString.skip
-  }
-  if (queryString.limit !== DefaultLimit) {
-    obj.skip = queryString.skip
+  if (queryString.page !== PageSize) {
+    obj.page = queryString.page
   }
   const search = stringify(obj)
   navigate('/todos?' + search)
 }
 
 const GetTodos = gql`
-  query GET_TODOS($filter: TodosFilter!, $pagination: Pagination!) {
-    todos(filter: $filter, pagination: $pagination) {
-      id
-      text
-      checked
+    query GET_TODOS($filter: TodosFilter!, $pagination: Pagination!) {
+        todos(filter: $filter, pagination: $pagination) {
+            id
+            text
+            checked
+        }
+        todosCount
     }
-    todosCount
-  }
 `
 
-const TodoItem = ({ todo }: { todo: GET_TODOS_todos }) => (
-  <View
-    style={{
-      margin: 5,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: 'black',
-      flexDirection: 'row',
-      alignItems: 'center',
-    }}
-  >
-    <Text style={{ width: 100 }}>{todo.id}</Text>
-    <Text style={{ width: 400 }}>{todo.text}</Text>
-    <Text style={{ width: 100 }}>{todo.checked ? 'DONE!' : 'todo'}</Text>
-  </View>
-)
+const TodosTable = ({
+                      todos,
+                      todosCount,
+                      queryString,
+                    }: GET_TODOS & HasQueryString) => {
+  const numberOfPages = Math.ceil(todosCount / PageSize)
+  const pageFirst = ((queryString.page - 1) * PageSize) + 1
+  const pageLast = Math.min(todosCount, pageFirst + PageSize)
+  const pageLabel = `${pageFirst}-${pageLast} of ${todosCount}`
+  return (
+    <DataTable>
+      <DataTable.Header>
+        <DataTable.Title style={{ maxWidth: 200 }}>Id</DataTable.Title>
+        <DataTable.Title>Name</DataTable.Title>
+        <DataTable.Title style={{ maxWidth: 50 }}>Status</DataTable.Title>
+      </DataTable.Header>
 
-const TodosPagination = ({
-  todosCount,
-  queryString,
-}: {
-  todosCount: number
-  queryString: TodosQueryString
-}) => (
-  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-    <Text
-      style={{
-        padding: 10,
-      }}
-    >
-      Total={todosCount}
-    </Text>
-    <Text
-      style={{
-        padding: 10,
-      }}
-    >
-      Skip={queryString.skip}
-    </Text>
-    <Text
-      style={{
-        padding: 10,
-      }}
-    >
-      Limit={queryString.limit}
-    </Text>
-    <Text
-      style={{
-        padding: 10,
-      }}
-      onPress={() =>
-        updateQueryString({
-          ...queryString,
-          skip: Math.max(0, queryString.skip - DefaultLimit),
-        })
-      }
-    >
-      Previous
-    </Text>
-    <Text
-      style={{
-        padding: 10,
-      }}
-      onPress={() =>
-        updateQueryString({
-          ...queryString,
-          skip: queryString.skip + DefaultLimit,
-        })
-      }
-    >
-      Next
-    </Text>
-  </View>
-)
-
-const Todos = ({
-  todos,
-  todosCount,
-  queryString,
-}: GET_TODOS & HasQueryString) => (
-  <View style={{
-    flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "space-around",
-  }}>
-    <View style={{ padding: 10 }}>
       {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
+        <DataTable.Row key={todo.id}>
+          <DataTable.Cell style={{ maxWidth: 200 }}>{todo.id}</DataTable.Cell>
+          <DataTable.Cell>{todo.text}</DataTable.Cell>
+          <DataTable.Cell style={{ maxWidth: 50 }}>
+            <Checkbox
+              status={todo.checked ? 'checked' : 'unchecked'}
+              onPress={() => {
+                // TODO
+              }}
+            />
+          </DataTable.Cell>
+        </DataTable.Row>
       ))}
-    </View>
-    <View style={{ padding: 10 }}>
-      <TodosPagination todosCount={todosCount} queryString={queryString} />
-    </View>
-  </View>
-)
+
+      <DataTable.Pagination
+        page={queryString.page - 1}
+        numberOfPages={numberOfPages}
+        onPageChange={page => {
+          updateQueryString({
+            ...queryString,
+            page: page + 1,
+          })
+        }}
+        label={pageLabel}
+      />
+    </DataTable>
+  )
+}
 
 const TodosQuery = ({ queryString }: HasQueryString) => (
   <View
     style={{
-      flexGrow: 1,
       alignItems: 'center',
       justifyContent: 'center',
       padding: 10,
+      width: '100%',
     }}
   >
     <Query<GET_TODOS, GET_TODOSVariables>
@@ -182,8 +121,8 @@ const TodosQuery = ({ queryString }: HasQueryString) => (
       variables={{
         filter: { checked: queryString.checked },
         pagination: {
-          skip: queryString.skip,
-          limit: queryString.limit,
+          skip: (queryString.page - 1) * PageSize,
+          limit: PageSize,
         },
       }}
     >
@@ -191,7 +130,7 @@ const TodosQuery = ({ queryString }: HasQueryString) => (
         if (loading) {
           return (
             <View style={{ padding: 20 }}>
-              <ActivityIndicator size="large" />
+              <ActivityIndicator size="large"/>
             </View>
           )
         }
@@ -213,12 +152,7 @@ const TodosQuery = ({ queryString }: HasQueryString) => (
             </View>
           )
         }
-        return (
-          <View style={{ padding: 10,       flexGrow: 1,
-          }}>
-            <Todos queryString={queryString} {...data!} />
-          </View>
-        )
+        return <TodosTable queryString={queryString} {...data!} />
       }}
     </Query>
   </View>
@@ -234,7 +168,7 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
       onPress={() =>
         updateQueryString({
           ...queryString,
-          ...DefaultPagination,
+          page: 1,
           checked: null,
         })
       }
@@ -249,7 +183,7 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
       onPress={() =>
         updateQueryString({
           ...queryString,
-          ...DefaultPagination,
+          page: 1,
           checked: true,
         })
       }
@@ -264,7 +198,7 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
       onPress={() =>
         updateQueryString({
           ...queryString,
-          ...DefaultPagination,
+          page: 1,
           checked: false,
         })
       }
@@ -276,26 +210,25 @@ const TodosFilter = ({ queryString }: HasQueryString) => (
 
 export default class TodosPage extends React.Component<any> {
   render() {
-    // @ts-ignore
-    const isBrowser = !!global.window
     const queryString = getQueryString(this.props.location.search as string)
     return (
       <MainLayout>
         <View
           style={{
-            flex: 1,
-            maxWidth: 800,
             alignItems: 'center',
             padding: 30,
+            minWidth: 400,
+            maxWidth: 1000,
+            width: '100%',
           }}
         >
           <View style={{ padding: 10 }}>
             <Text style={{ fontSize: 30 }}>Todos page</Text>
           </View>
           <View style={{ padding: 10 }}>
-            <TodosFilter queryString={queryString} />
+            <TodosFilter queryString={queryString}/>
           </View>
-          <TodosQuery queryString={queryString} />
+          <TodosQuery queryString={queryString}/>
         </View>
       </MainLayout>
     )
