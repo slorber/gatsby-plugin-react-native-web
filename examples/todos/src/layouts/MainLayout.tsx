@@ -8,7 +8,7 @@ const Layout: React.FC = ({ children }) => (
   <View
     style={{
       flex: 1,
-      width: '100%',
+      width: '100vw',
     }}
   >
     <View
@@ -20,38 +20,36 @@ const Layout: React.FC = ({ children }) => (
       }}
     >
       <Appbar>
+
         <Appbar.Action
-          icon="archive"
-          onPress={() => console.log('Pressed archive')}
-        />
-        <Appbar.Action
-          icon="mail"
-          onPress={() => console.log('Pressed mail')}
-        />
-        <Appbar.Action
-          icon="label"
-          onPress={() => console.log('Pressed label')}
-        />
-        <Appbar.Action
-          icon="delete"
-          onPress={() => console.log('Pressed delete')}
-        />
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingHorizontal: 20,
+          icon="home"
+          onPress={() => {
+            // TODO
           }}
-        >
-          <View style={{ padding: 20 }}>
-            <Link to="/">Home</Link>
-          </View>
-          <View style={{ padding: 20 }}>
-            <Link to="/todos">Todos</Link>
-          </View>
-          <View style={{ padding: 20 }}>
-            <Link to="/createTodo">Create todo</Link>
-          </View>
+        />
+        <View style={{ paddingRight: 10 }}>
+          <Link to="/" style={{ textShadow: 'none', color: 'white' }}>Home</Link>
+        </View>
+
+
+        <Appbar.Action
+          icon="list"
+          onPress={() => {
+            // TODO
+          }}
+        />
+        <View style={{ paddingRight: 10 }}>
+          <Link to="/todos" style={{ textShadow: 'none', color: 'white' }}>Todos</Link>
+        </View>
+
+        <Appbar.Action
+          icon="add-circle"
+          onPress={() => {
+            // TODO
+          }}
+        />
+        <View style={{ paddingRight: 10 }}>
+          <Link to="/createTodo" style={{ textShadow: 'none', color: 'white' }}>Create</Link>
         </View>
       </Appbar>
     </View>
@@ -62,7 +60,7 @@ const Layout: React.FC = ({ children }) => (
       }}
     >
       <View style={{
-        minWidth: 400,
+        minWidth: 300,
         maxWidth: 1000,
         width: '100%',
       }}>
