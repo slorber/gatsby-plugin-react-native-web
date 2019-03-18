@@ -3,7 +3,6 @@ import { View, Platform } from 'react-native'
 import { Link } from 'gatsby'
 import { AppApolloProvider } from '../AppApolloClient'
 import { Appbar, Provider as PaperProvider } from 'react-native-paper'
-import './MainLayout.css'
 
 const Layout: React.SFC = ({ children }) => (
   <View

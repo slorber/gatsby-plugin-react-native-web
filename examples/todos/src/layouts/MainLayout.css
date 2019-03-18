@@ -1,8 +1,0 @@
-html,
-body,
-#___gatsby,
-#___gatsby > div > div > div {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
