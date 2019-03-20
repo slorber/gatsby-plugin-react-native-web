@@ -1,8 +1,9 @@
-import * as React from 'react'
-import { View, Platform } from 'react-native'
+import React from 'react'
+import { View } from 'react-native'
 import { AppApolloProvider } from '../AppApolloClient'
 import { Appbar, Provider as PaperProvider } from 'react-native-paper'
 import AppLink from '../components/appLink'
+import './MainLayout.css'
 
 const Layout: React.FC = ({ children }) => (
   <View
@@ -20,7 +21,6 @@ const Layout: React.FC = ({ children }) => (
       }}
     >
       <Appbar>
-
         <Appbar.Action
           icon="home"
           onPress={() => {
@@ -28,9 +28,10 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <AppLink to="/" style={{ textShadow: 'none', color: 'white' }}>Home</AppLink>
+          <AppLink to="/" style={{ textShadow: 'none', color: 'white' }}>
+            Home
+          </AppLink>
         </View>
-
 
         <Appbar.Action
           icon="list"
@@ -39,7 +40,9 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <AppLink to="/todos" style={{ textShadow: 'none', color: 'white' }}>Todos</AppLink>
+          <AppLink to="/todos" style={{ textShadow: 'none', color: 'white' }}>
+            Todos
+          </AppLink>
         </View>
 
         <Appbar.Action
@@ -49,7 +52,12 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <AppLink to="/createTodo" style={{ textShadow: 'none', color: 'white' }}>Create</AppLink>
+          <AppLink
+            to="/createTodo"
+            style={{ textShadow: 'none', color: 'white' }}
+          >
+            Create
+          </AppLink>
         </View>
       </Appbar>
     </View>
@@ -59,34 +67,22 @@ const Layout: React.FC = ({ children }) => (
         padding: 30,
       }}
     >
-      <View style={{
-        minWidth: 300,
-        maxWidth: 1000,
-        width: '100%',
-      }}>
+      <View
+        style={{
+          minWidth: 300,
+          maxWidth: 1000,
+          width: '100%',
+        }}
+      >
         {children}
       </View>
     </View>
   </View>
 )
 
-
-/* tslint:disable */
-const MaterialIconsWebStyle = Platform.OS === 'web' ? (
-  <style type="text/css">{`
-        @font-face {
-          font-family: 'MaterialIcons';
-          src: url(${require('react-native-vector-icons/Fonts/MaterialIcons.ttf')}) format('truetype');
-        }
-      `}</style>
-) : null
-/* tslint:enable */
-
-
 const MainLayout: React.FC = ({ children }) => (
   <AppApolloProvider>
     <PaperProvider>
-      {MaterialIconsWebStyle}
       <Layout>{children}</Layout>
     </PaperProvider>
   </AppApolloProvider>
