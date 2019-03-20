@@ -18,36 +18,17 @@ Use the 2.x branch
 
 `yarn add gatsby-plugin-react-native-web@2.0.0-beta.0`
 
+Add the RN / RNW dependencies.
+Choose versions carefully according to RNW doc. 
+If you want you can pick versions from `examples` folder.
+
 Please report [here](https://github.com/slorber/gatsby-plugin-react-native-web) if it works fine for you, or not.
 
-You should NOT use `gatsby-plugin-react-next` for Gatsby 2
+# Demo
 
-# Gatsby 1
+The `examples` folder have runnable Gatsby site demos. They are also hosted:
 
-These versions have been tested together and work correctly:
-
-```
-"gatsby-plugin-react-native-web": "^0.3.0",
-"gatsby": "^1.9.255",
-"react": "^16.3.0",
-"react-dom": "^16.3.0",
-"react-native-web": "^0.6.0",
-"babel-plugin-react-native-web": "^0.6.0",
-```
-
-You need to use `gatsby-plugin-react-next` for React 16 support.
-
-Gatsby basic config should look like:
-
-```js
-module.exports = {
-  plugins: [
-    `gatsby-plugin-react-next`,
-    `gatsby-plugin-react-native-web`,
-  ],
-}
-```
-
+- [Todos example](https://gatsby-rnw-todos.netlify.com): a "todo backoffice" built with Gatsby + RNW + Apollo + TS + react-native-paper: a fancy but effective stack. 
 
 # Example usage
 
