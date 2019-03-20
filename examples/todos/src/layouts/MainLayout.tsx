@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { View, Platform } from 'react-native'
-import { Link } from 'gatsby'
 import { AppApolloProvider } from '../AppApolloClient'
 import { Appbar, Provider as PaperProvider } from 'react-native-paper'
+import AppLink from '../components/appLink'
 
 const Layout: React.FC = ({ children }) => (
   <View
@@ -28,7 +28,7 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <Link to="/" style={{ textShadow: 'none', color: 'white' }}>Home</Link>
+          <AppLink to="/" style={{ textShadow: 'none', color: 'white' }}>Home</AppLink>
         </View>
 
 
@@ -39,7 +39,7 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <Link to="/todos" style={{ textShadow: 'none', color: 'white' }}>Todos</Link>
+          <AppLink to="/todos" style={{ textShadow: 'none', color: 'white' }}>Todos</AppLink>
         </View>
 
         <Appbar.Action
@@ -49,7 +49,7 @@ const Layout: React.FC = ({ children }) => (
           }}
         />
         <View style={{ paddingRight: 10 }}>
-          <Link to="/createTodo" style={{ textShadow: 'none', color: 'white' }}>Create</Link>
+          <AppLink to="/createTodo" style={{ textShadow: 'none', color: 'white' }}>Create</AppLink>
         </View>
       </Appbar>
     </View>

@@ -1,9 +1,9 @@
 import { gql } from 'apollo-boost'
-import { Link } from 'gatsby'
 import React, { ComponentType } from 'react'
 import { Query } from 'react-apollo'
 import { ActivityIndicator, Linking, Text, View } from 'react-native'
 import { TODO_STATS } from '../__apollo_codegen__/TODO_STATS'
+import AppLink from '../components/appLink'
 import MainLayout from '../layouts/MainLayout'
 import { Avatar, Card, Title, Paragraph, Surface } from 'react-native-paper'
 import { stringify } from 'query-string'
@@ -31,7 +31,7 @@ const TodoStatCard = ({
   return (
     <View style={{ margin: 20 }}>
       <Surface style={{ elevation: 8 }}>
-        <Link to={linkUrl}>
+        <AppLink to={linkUrl}>
           <Card style={{ minWidth: 250 }}>
             <Card.Title
               title={label}
@@ -40,7 +40,7 @@ const TodoStatCard = ({
             />
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
           </Card>
-        </Link>
+        </AppLink>
       </Surface>
     </View>
   )
