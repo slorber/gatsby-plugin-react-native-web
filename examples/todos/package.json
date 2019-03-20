@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"yarn start:codegen\" \"yarn start:gatsby\" \"yarn start:typecheck\"",
-    "start:gatsby": "yarn apollo:codegen && gatsby develop",
+    "start:gatsby": "gatsby develop",
     "start:typecheck": "yarn typecheck --watch",
     "start:codegen": "yarn apollo:codegen --watch",
     "develop": "gatsby develop",
