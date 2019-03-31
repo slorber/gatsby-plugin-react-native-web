@@ -2,7 +2,8 @@ import React from 'react'
 import { Link, navigate } from 'gatsby'
 import './layout.css'
 import { Text, View } from 'react-native'
-import { Appbar } from 'react-native-paper'
+import { Appbar, Provider as PaperProvider } from 'react-native-paper'
+import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
 
 const Menu = () => (
   <Appbar>
@@ -29,22 +30,26 @@ const Menu = () => (
 )
 
 const Layout = ({ title, children }) => (
-  <View style={{ minHeight: '100vh' }}>
-    <Menu />
-    <View>
-      <Text
-        style={{
-          marginVertical: 30,
-          marginHorizontal: 10,
-          fontSize: 40,
-          fontWeight: 'bold',
-        }}
-      >
-        {title}
-      </Text>
-    </View>
-    {children}
-  </View>
+  <RNEThemeProvider>
+    <PaperProvider>
+      <View style={{ height: '100vh', overflowY: 'auto' }}>
+        <Menu />
+        <View>
+          <Text
+            style={{
+              marginVertical: 30,
+              marginHorizontal: 10,
+              fontSize: 40,
+              fontWeight: 'bold',
+            }}
+          >
+            {title}
+          </Text>
+        </View>
+        {children}
+      </View>
+    </PaperProvider>
+  </RNEThemeProvider>
 )
 
 export default Layout

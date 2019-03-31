@@ -1,6 +1,6 @@
 import React from 'react'
 import './layout.css'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 
 const ExternalLink = ({ children, target = "_blank", ...props }) => (
   <Text
