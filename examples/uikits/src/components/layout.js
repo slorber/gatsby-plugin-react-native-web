@@ -12,6 +12,12 @@ const Menu = () => (
     >
       react-native-paper
     </Link>
+    <Link
+      to={'elements'}
+      style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
+    >
+      react-native-elements
+    </Link>
   </Appbar>
 )
 

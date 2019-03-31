@@ -1,11 +1,10 @@
-
 // See https://callstack.github.io/react-native-paper/using-on-the-web.html
 exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   const config = getConfig()
   config.module.rules.push({
     test: /\.js$/,
     include: /node_modules/,
-    exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view)/,
+    exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view|react-native-elements|react-native-ratings)/,
     use: {
       loader: 'babel-loader',
       options: {
@@ -26,5 +25,18 @@ exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
       },
     },
   })
+  /*
+  config.module.rules.push({
+    test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+    include: /node_modules/,
+    exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view|react-native-elements)/,
+    loader: require.resolve('url-loader'),
+    options: {
+      limit: 10000,
+      name: 'static/media/[name].[hash:8].[ext]',
+    },
+  })
+
+  */
   actions.replaceWebpackConfig(config)
 }

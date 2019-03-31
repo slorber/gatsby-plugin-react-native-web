@@ -12,13 +12,16 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-native": "^0.55",
+    "react-native-elements": "^1.1.0",
     "react-native-paper": "^2.13.0",
     "react-native-vector-icons": "^6.4.1",
     "react-native-web": "^0.11.1"
   },
   "devDependencies": {
+    "@babel/preset-flow": "^7.0.0",
+    "file-loader": "^3.0.1",
     "prettier": "^1.16.4",
-    "@babel/preset-flow": "^7.0.0"
+    "url-loader": "^1.1.2"
   },
   "keywords": [
     "gatsby"
