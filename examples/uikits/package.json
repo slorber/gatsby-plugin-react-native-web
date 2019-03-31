@@ -7,6 +7,7 @@
   "dependencies": {
     "gatsby": "^2.3.3",
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
+    "native-base": "^2.12.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -14,7 +15,7 @@
     "react-native": "^0.55",
     "react-native-elements": "^1.1.0",
     "react-native-paper": "^2.13.0",
-    "react-native-vector-icons": "^6.4.1",
+    "react-native-vector-icons": "^6.4.2",
     "react-native-web": "^0.11.1"
   },
   "devDependencies": {

@@ -4,7 +4,7 @@ exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   config.module.rules.push({
     test: /\.js$/,
     include: /node_modules/,
-    exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view|react-native-elements|react-native-ratings)/,
+    exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view|react-native-elements|react-native-ratings|react-native-drawer|react-native-keyboard-aware-scroll-view|react-native-tab-view|react-native-easy-grid|react-navigation|react-native-iphone-x-helper|native-base-shoutem-theme|native-base[/\\]node_modules[/\\]react-native-vector-icons)/,
     use: {
       loader: 'babel-loader',
       options: {
