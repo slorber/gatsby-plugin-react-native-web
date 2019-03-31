@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import './layout.css'
 import { Text, View } from 'react-native'
 import { Appbar } from 'react-native-paper'
 
 const Menu = () => (
   <Appbar>
+    <Appbar.Action icon="home" onPress={() => navigate('/')} />
     <Link
       to={'paper'}
       style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
@@ -17,6 +18,12 @@ const Menu = () => (
       style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
     >
       react-native-elements
+    </Link>
+    <Link
+      to={'uiKittens'}
+      style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
+    >
+      react-native-ui-kittens
     </Link>
   </Appbar>
 )

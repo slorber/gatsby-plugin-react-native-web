@@ -38,10 +38,10 @@ const FabExemple = () => {
 }
 */
 
-const Elements = () => (
+const NativeBase = () => (
   <Layout title={'native-base examples'}>
     <Text>Help me make this work please!</Text>
   </Layout>
 )
 
-export default Elements
+export default NativeBase

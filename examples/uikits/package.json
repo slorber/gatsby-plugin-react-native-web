@@ -15,6 +15,7 @@
     "react-native": "^0.55",
     "react-native-elements": "^1.1.0",
     "react-native-paper": "^2.13.0",
+    "react-native-ui-kitten": "^3.1.2",
     "react-native-vector-icons": "^6.4.2",
     "react-native-web": "^0.11.1"
   },

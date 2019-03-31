@@ -29,7 +29,7 @@ const IndexPage = () => (
       </ExternalLink>
     </P>
     <P>
-      Built by
+      Built by{" "}
       <ExternalLink href="https://twitter.com/sebastienlorber">
         @sebastienlorber
       </ExternalLink>
