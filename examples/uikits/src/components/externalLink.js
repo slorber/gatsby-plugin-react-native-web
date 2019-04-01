@@ -6,7 +6,7 @@ const ExternalLink = ({ children, target = "_blank", ...props }) => (
   <Text
     accessibilityRole="link"
     target={target}
-    style={{ color: 'blue' }}
+    style={{ color: 'blue', textDecoration: "underline" }}
     {...props}
   >
     {children}

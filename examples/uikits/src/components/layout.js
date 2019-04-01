@@ -42,7 +42,7 @@ const Menu = () => (
       href={'report.html'}
       style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
     >
-      Bundle report
+      Bundle analysis
     </ExternalLink>
   </Appbar>
 )
