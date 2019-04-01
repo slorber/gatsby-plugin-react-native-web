@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "expo": "^32.0.6",
+    "expo-asset": "^4.0.0",
+    "expo-camera": "^4.0.0",
     "gatsby": "^2.3.3",
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
