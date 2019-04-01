@@ -3,6 +3,7 @@ import { Link, navigate } from 'gatsby'
 import './layout.css'
 import { Text, View } from 'react-native'
 import { Appbar } from 'react-native-paper'
+import ExternalLink from 'components/externalLink'
 
 const Menu = () => (
   <Appbar>
@@ -37,6 +38,12 @@ const Menu = () => (
     >
       nativebase
     </Link>
+    <ExternalLink
+      href={'report.html'}
+      style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
+    >
+      Bundle report
+    </ExternalLink>
   </Appbar>
 )
 

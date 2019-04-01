@@ -21,7 +21,6 @@ const Example = ({ title, children, style, row = false }) => (
           flexWrap: 'wrap',
           alignItems: 'center',
         },
-        ,
         style,
       ]}
     >
