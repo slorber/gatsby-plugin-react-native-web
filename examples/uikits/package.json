@@ -7,6 +7,7 @@
   "dependencies": {
     "gatsby": "^2.3.3",
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "nachos-ui": "^0.2.0-beta.1",
     "native-base": "^2.12.1",
     "prop-types": "^15.7.2",

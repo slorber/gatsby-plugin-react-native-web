@@ -1,3 +1,12 @@
 module.exports = {
-  plugins: [`gatsby-plugin-react-native-web`],
+  plugins: [
+    `gatsby-plugin-react-native-web`,
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        analyzerPort: 3000,
+        production: true,
+      },
+    },
+  ],
 }
