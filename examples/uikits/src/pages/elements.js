@@ -9,6 +9,7 @@ import {
   PricingCard,
   SocialIcon,
   Tooltip,
+  ThemeProvider,
 } from 'react-native-elements'
 import Example from '../components/example'
 import { Text } from 'react-native'
@@ -105,14 +106,16 @@ const SliderExample = () => {
 */
 
 const Elements = () => (
-  <Layout title={'react-native-elements examples'}>
-    <SearchBarExample />
-    <AirbnbRatingExample />
-    <HeartRatingExample />
-    <PricingCardExample />
-    <SocialIconExample />
-    <TooltipExample />
-  </Layout>
+  <ThemeProvider>
+    <Layout title={'react-native-elements examples'}>
+      <SearchBarExample />
+      <AirbnbRatingExample />
+      <HeartRatingExample />
+      <PricingCardExample />
+      <SocialIconExample />
+      <TooltipExample />
+    </Layout>
+  </ThemeProvider>
 )
 
 export default Elements

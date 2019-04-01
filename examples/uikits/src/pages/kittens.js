@@ -30,7 +30,7 @@ const RkSwitchExample = () => {
   )
 }
 
-const UIKittens = () => (
+const kittens = () => (
   <Layout title={'react-native-ui-kittens examples'}>
     <RkButtonExample />
     <RkChoiceExample />
@@ -38,4 +38,4 @@ const UIKittens = () => (
   </Layout>
 )
 
-export default UIKittens
+export default kittens

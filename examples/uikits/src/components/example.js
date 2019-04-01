@@ -2,7 +2,7 @@ import React from 'react'
 import './layout.css'
 import { Text, View } from 'react-native'
 
-const Example = ({ title, children, style }) => (
+const Example = ({ title, children, style, row = false }) => (
   <View
     style={[
       {
@@ -14,7 +14,19 @@ const Example = ({ title, children, style }) => (
     ]}
   >
     <Text style={{ marginVertical: 10, fontSize: 24 }}>{title}</Text>
-    <View style={style}>{children}</View>
+    <View
+      style={[
+        row && {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+        },
+        ,
+        style,
+      ]}
+    >
+      {children}
+    </View>
   </View>
 )
 

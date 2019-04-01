@@ -1,10 +1,23 @@
-
 @font-face {
-    font-family: 'MaterialIcons';
-    src: url('../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf') format('truetype');
+  font-family: 'MaterialIcons';
+  src: url('../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf')
+    format('truetype');
+}
+@font-face {
+  font-family: 'Material Icons';
+  src: url('../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf')
+    format('truetype');
 }
 
 @font-face {
-    font-family: 'FontAwesome';
-    src: url('../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf') format('truetype');
+  font-family: 'FontAwesome';
+  src: url('../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf')
+    format('truetype');
 }
+
+@font-face {
+  font-family: 'Ionicons';
+  src: url('../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf')
+    format('truetype');
+}
+
