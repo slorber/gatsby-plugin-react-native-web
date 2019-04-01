@@ -124,18 +124,9 @@ const SliderExample = () => {
 }
 
 const Nachos = () => (
-  <ThemeProvider
-    theme={
-      {
-        // TODO quite undocumented
-      }
-    }
-  >
+  <ThemeProvider>
     <Layout title={'nachos-ui examples'}>
       <CardExample />
-      <BubbleExample />
-      <ButtonExample />
-      <SwitcherExample />
       <CheckboxExample />
       <SpinnerExample />
       <SliderExample />
