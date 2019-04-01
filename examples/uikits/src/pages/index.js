@@ -21,6 +21,12 @@ const IndexPage = () => (
       build a static website.
     </P>
     <P>
+      If you want to contribute/modify the examples: {' '}
+      <ExternalLink href="https://github.com/slorber/gatsby-plugin-react-native-web/tree/master/examples/uikits">
+        it's all there
+      </ExternalLink>
+    </P>
+    <P>
       Note: the fact that a site is static does not mean you can't build highly
       interactive things and retriève dynamic data from apis. See this more
       dynamic example:{' '}
