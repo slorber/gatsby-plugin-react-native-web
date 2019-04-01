@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby'
 import './layout.css'
 import { Text, View } from 'react-native'
 import { Appbar } from 'react-native-paper'
-import ExternalLink from 'components/externalLink'
+import ExternalLink from '../components/externalLink'
 
 const Menu = () => (
   <Appbar>
