@@ -1,6 +1,9 @@
 Gatsby plugin for react-native-web
 ===================================
 
+[![NPM](https://img.shields.io/npm/dm/gatsby-plugin-react-native-web.svg)](https://www.npmjs.com/package/gatsby-plugin-react-native-web)
+[![Build Status](https://travis-ci.com/slorber/gatsby-plugin-react-native-web.svg?branch=master)](https://travis-ci.com/slorber/gatsby-plugin-react-native-web)
+
 
 Share components between your React Native mobile app and your Gatsby static website.
 
