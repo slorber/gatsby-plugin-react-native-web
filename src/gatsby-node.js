@@ -1,32 +1,32 @@
-const merge = require('webpack-merge')
+import withUnimodules from '@expo/webpack-config/withUnimodules'
+import { getModuleFileExtensions } from '@expo/webpack-config/utils'
 
-exports.onCreateBabelConfig = ({ actions }) => {
-  actions.setBabelPlugin({
-    name: `babel-plugin-react-native-web`,
+const resolvableExtensions = () => getModuleFileExtensions('web')
+
+function onCreateBabelConfig({ actions }, options) {
+  actions.setBabelPreset({
+    name: require.resolve(`babel-preset-expo`),
+    options,
   })
 }
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
-  const originalWebpackConfig = getConfig()
-
-  const reactNativeWebConfig = {
-    resolve: {
-      extensions: [
-        '.web.mjs',
-        '.web.js',
-        '.web.jsx',
-        '.web.wasm',
-        '.web.json',
-        '.web.ts',
-        '.web.tsx',
-      ],
-      alias: {
-        'react-native': 'react-native-web',
-      },
-    },
+function onCreateWebpackConfig({ actions, getConfig }) {
+  const gatsbyConfig = getConfig()
+  if (!gatsbyConfig.context) {
+    throw new Error('Expected Gatsby config to provide the root context')
   }
 
-  const newConfig = merge(reactNativeWebConfig, originalWebpackConfig)
+  let config
+  try {
+    config = withUnimodules(gatsbyConfig)
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
 
-  actions.replaceWebpackConfig(newConfig)
+  actions.replaceWebpackConfig(config)
 }
+
+exports.resolvableExtensions = resolvableExtensions
+exports.onCreateBabelConfig = onCreateBabelConfig
+exports.onCreateWebpackConfig = onCreateWebpackConfig

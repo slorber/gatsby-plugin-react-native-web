@@ -1,13 +1,21 @@
-import React from 'react'
-import { Link, navigate } from 'gatsby'
 import './layout.css'
+
+import { Link, navigate } from 'gatsby'
+import React from 'react'
 import { Text, View } from 'react-native'
 import { Appbar } from 'react-native-paper'
-import ExternalLink from '../components/externalLink'
+
+import ExternalLink from './externalLink'
 
 const Menu = () => (
   <Appbar>
     <Appbar.Action icon="home" onPress={() => navigate('/')} />
+    <Link
+      to={'expo'}
+      style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
+    >
+      Expo
+    </Link>
     <Link
       to={'paper'}
       style={{ margin: 20, color: 'white', fontWeight: 'bold' }}
