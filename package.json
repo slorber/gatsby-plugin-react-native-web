@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.7.9",
-    "babel-preset-expo": "^7.0.0"
+    "babel-preset-expo": "^7.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",

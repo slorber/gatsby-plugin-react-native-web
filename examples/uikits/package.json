@@ -26,7 +26,8 @@
     "react-native-web-hooks": "^1.0.2"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "babel-preset-expo": "^7.1.0"
   },
   "keywords": [
     "gatsby"
