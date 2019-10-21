@@ -5,9 +5,16 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "expo": "^35.0.0",
+    "@unimodules/core": "^4.0.0",
+    "@unimodules/react-native-adapter": "^4.0.0",
+    "expo-asset": "^7.0.0",
     "expo-blur": "^7.0.0",
     "expo-camera": "^7.0.0",
+    "expo-constants": "^7.0.0",
+    "expo-file-system": "^7.0.0",
+    "expo-font": "^7.0.0",
+    "expo-location": "^7.0.0",
+    "expo-permissions": "^7.0.0",
     "gatsby": "^2.3.3",
     "gatsby-plugin-react-native-web": "../../gatsby-plugin-react-native-web-v2.1.0-beta.0.tgz",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
@@ -26,8 +33,8 @@
     "react-native-web-hooks": "^1.0.2"
   },
   "devDependencies": {
-    "prettier": "^1.16.4",
-    "babel-preset-expo": "^7.1.0"
+    "babel-preset-expo": "^7.1.0",
+    "prettier": "^1.16.4"
   },
   "keywords": [
     "gatsby"

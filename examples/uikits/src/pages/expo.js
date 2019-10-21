@@ -5,7 +5,7 @@ import * as Font from 'expo-font'
 import * as Location from 'expo-location'
 import * as Permissions from 'expo-permissions'
 import React, { useEffect, useState } from 'react'
-import { Button, ScrollView, Text, View } from 'react-native'
+import { Button, ScrollView, Image, Text, View } from 'react-native'
 
 import Example from '../components/example'
 import Layout from '../components/layout'
