@@ -16,7 +16,7 @@
     "expo-location": "^7.0.0",
     "expo-permissions": "^7.0.0",
     "gatsby": "^2.3.3",
-    "gatsby-plugin-react-native-web": "../../gatsby-plugin-react-native-web-v2.1.0-beta.0.tgz",
+    "gatsby-plugin-react-native-web": "^3.0.0-beta.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "nachos-ui": "^0.2.0-beta.1",
     "native-base": "^2.12.1",
