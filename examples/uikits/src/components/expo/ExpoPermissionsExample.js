@@ -25,7 +25,10 @@ export default function PermissionsExample() {
         contentContainerStyle={{ alignItems: 'stretch', flex: 1 }}
       >
         {permissions.map(([permissionName, permissionType]) => (
-          <View style={{ marginBottom: 12 }}>
+          <View
+            key={`${permissionName}-${permissionType}`}
+            style={{ marginBottom: 12 }}
+          >
             <Text style={{ marginBottom: 8 }}>{permissionName}</Text>
             <View
               style={{
@@ -36,7 +39,7 @@ export default function PermissionsExample() {
             >
               <Button
                 style={{ marginVertical: 4 }}
-                key={permissionType}
+                key={`Button-${permissionName}-${permissionType}`}
                 onPress={async () => {
                   alert((await Permissions.getAsync(permissionType)).status)
                 }}
