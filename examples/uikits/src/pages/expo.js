@@ -50,7 +50,7 @@ function FontExample() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       await Font.loadAsync({
         'retro-regular': require('../assets/retro-regular.ttf'),
       })
