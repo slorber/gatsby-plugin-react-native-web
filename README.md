@@ -7,7 +7,7 @@ Share components between your React Native mobile app and your Gatsby static web
 
 # Setup
 
-1. Install the plugin: `yarn add gatsby-plugin-react-native-web` or `npm install --save gatsby-plugin-react-native-web`
+1. Install the plugin: `yarn add react-native-web gatsby-plugin-react-native-web` or `npm install --save react-native-web gatsby-plugin-react-native-web`
 2. Create a `gatsby-config.js` and use the plugin:
    `gatsby-config.js`
 
