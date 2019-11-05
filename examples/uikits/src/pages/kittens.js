@@ -1,40 +1,24 @@
 import React, { useState } from 'react'
-
-import Layout from '../components/layout'
+import { Button } from 'react-native-ui-kitten'
+import KittensSelectExample from '../components/kittens/KittensSelectExample'
+import KittensDatepickerExample from '../components/kittens/KittensDatepickerExample'
 import Example from '../components/example'
-import { RkButton, RkChoice, RkSwitch } from 'react-native-ui-kitten'
+import Layout from '../components/layout'
 
-const RkButtonExample = () => (
-  <Example title="RkButton">
-    <RkButton>Button</RkButton>
-    <RkButton rkType="danger small" style={{ marginTop: 10 }}>
+const ButtonExample = () => (
+  <Example title="Button">
+    <Button>Button</Button>
+    <Button rkType="danger small" style={{ marginTop: 10 }}>
       Cancel
-    </RkButton>
+    </Button>
   </Example>
 )
-
-const RkChoiceExample = () => (
-  <Example title="RkChoice">
-    <RkChoice rkType="clear" selected={true} />
-    <RkChoice rkType="posNeg" selected={false} />
-    <RkChoice rkType="radio" selected />
-  </Example>
-)
-
-const RkSwitchExample = () => {
-  const [value, setValue] = useState(false)
-  return (
-    <Example title="RkSwitch">
-      <RkSwitch value={value} onValueChange={setValue} />
-    </Example>
-  )
-}
 
 const kittens = () => (
   <Layout title={'react-native-ui-kittens examples'}>
-    <RkButtonExample />
-    <RkChoiceExample />
-    <RkSwitchExample />
+    <ButtonExample />
+    <KittensSelectExample />
+    <KittensDatepickerExample />
   </Layout>
 )
 

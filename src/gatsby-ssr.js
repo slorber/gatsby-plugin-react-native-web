@@ -1,25 +1,22 @@
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
+import * as React from 'react'
+import { renderToString } from 'react-dom/server'
 import { AppRegistry } from 'react-native'
 
-exports.replaceRenderer = ({
+function replaceRenderer({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
-}) => {
-  class App extends React.Component {
-    render() {
-      return bodyComponent
-    }
-  }
+}) {
+  const RootComponent = () => bodyComponent
 
-  // See https://github.com/necolas/react-native-web/blob/master/website/guides/getting-started.md#server-side-rendering
-  AppRegistry.registerComponent('App', () => App)
-  const { element, getStyleElement } = AppRegistry.getApplication('App')
+  AppRegistry.registerComponent('main', () => RootComponent)
+  const { element, getStyleElement } = AppRegistry.getApplication('main')
 
-  const html = ReactDOMServer.renderToString(element)
+  const markup = renderToString(element)
   const styleElement = getStyleElement()
 
-  replaceBodyHTMLString(html)
+  replaceBodyHTMLString(markup)
   setHeadComponents([styleElement])
 }
+
+exports.replaceRenderer = replaceRenderer

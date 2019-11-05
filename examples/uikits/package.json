@@ -5,11 +5,20 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "expo": "^32.0.6",
-    "expo-asset": "^4.0.0",
-    "expo-camera": "^4.0.0",
+    "@eva-design/eva": "^1.2.0",
+    "@unimodules/core": "^4.0.0",
+    "@unimodules/react-native-adapter": "^4.0.0",
+    "expo-asset": "^7.0.0",
+    "expo-battery": "^1.0.1",
+    "expo-blur": "^7.0.0",
+    "expo-camera": "^7.0.0",
+    "expo-constants": "^7.0.1",
+    "expo-file-system": "^7.0.0",
+    "expo-font": "^7.0.0",
+    "expo-location": "^7.0.0",
+    "expo-permissions": "^7.0.0",
     "gatsby": "^2.3.3",
-    "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
+    "gatsby-plugin-react-native-web": "^3.0.0-beta.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "nachos-ui": "^0.2.0-beta.1",
     "native-base": "^2.12.1",
@@ -19,17 +28,16 @@
     "react-helmet": "^5.2.0",
     "react-native": "^0.55",
     "react-native-elements": "^1.1.0",
+    "react-native-gesture-handler": "^1.4.1",
     "react-native-paper": "^2.13.0",
-    "react-native-ui-kitten": "^3.1.2",
+    "react-native-ui-kitten": "^4.2.0",
     "react-native-vector-icons": "^6.4.2",
-    "react-native-web": "^0.11.1"
+    "react-native-web": "^0.11.1",
+    "react-native-web-hooks": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/preset-flow": "^7.0.0",
-    "babel-plugin-react-native-web": "^0.11.1",
-    "file-loader": "^3.0.1",
-    "prettier": "^1.16.4",
-    "url-loader": "^1.1.2"
+    "babel-preset-expo": "^7.1.0",
+    "prettier": "^1.16.4"
   },
   "keywords": [
     "gatsby"
