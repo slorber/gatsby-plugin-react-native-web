@@ -1,5 +1,5 @@
-import withUnimodules from '@expo/webpack-config/withUnimodules'
-import { getModuleFileExtensions } from '@expo/webpack-config/utils'
+import { withUnimodules } from '@expo/webpack-config/addons'
+import { getModuleFileExtensions } from '@expo/webpack-config/env'
 
 const resolvableExtensions = () => getModuleFileExtensions('web')
 
