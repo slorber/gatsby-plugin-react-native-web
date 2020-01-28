@@ -132,7 +132,7 @@ ReactNavigation may have web support, but Gatsby can't use ReactNavigation confi
 
 You'd rather keep using platform-specific navigation trees (pages for Gatsby, and stacks/tabs for ReactNavigation).
 
-Eventually you could build your own cross-platform `navigate()` function, and your own cross-platform `Link` component (take a look at [expo-gatsby-navigation](https://github.com/nandorojo/expo-gatsby-navigation).
+Eventually you could build your own cross-platform `navigate()` function, and your own cross-platform `Link` component (take a look at [expo-gatsby-navigation](https://github.com/nandorojo/expo-gatsby-navigation)).
 
 
 ### Can I share the same repo to build a mobile app and a Gatsby site with shared components?
