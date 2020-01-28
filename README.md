@@ -16,6 +16,8 @@ Support includes:
 - Works in MDX
 - Works in Docz
 
+**Note**: you don't necessarily need to use Expo, plain regular React-Native-Web is fine. It's just if you want to use Expo it's already setup for you.
+
 # Why
 
 Cross-platform code is finally taking off, and it's time to share more code between web and mobile.
@@ -56,6 +58,15 @@ It is likely to work with newer versions too.
      ],
    }
 ```
+
+**3. Install additional unimodules / cross-platform libraries**.
+
+```
+yarn expo install react-native-svg
+yarn expo install expo-camera
+``` 
+
+Using `yarn expo install myExpoLib` is useful because Expo knows the most appropriate version to install, according to current Expo SDK.
 
 # Demo
 
