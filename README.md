@@ -5,30 +5,29 @@
 
 Adds [React-Native-Web](https://github.com/necolas/react-native-web) and [Expo](https://docs.expo.io/) support to Gatsby.
 
-This means you can use components from the ReactNative ecosystem, directly on your Gatsby website (including MDX and Docz).
+This means you can use components from the ReactNative ecosystem, directly on your Gatsby website.
 
 Support includes:
-- Primitives from ReactNative
-- Expo unimodules with web support like `expo-camera`
-- Universal ReactNative design systems, such as `react-native-paper` or `react-native-ui-kitten` (or your own)
+- Primitive components from ReactNative (check RNW [support](https://github.com/necolas/react-native-web#compatibility-with-react-native))
+- Expo unimodules with web support like `expo-camera` (check Expo doc for support)
+- Universal ReactNative design system libraries, like `react-native-paper`, `react-native-ui-kitten`, your own...
 - Universal gesture systems with Animated, `react-native-gesture-handler` or Reanimated.
-- Univesal SVG components using `react-native-svg`
-
+- Universal SVG components using `react-native-svg`
+- Works in MDX
+- Works in Docz
 
 # Why
 
 Cross-platform code is finally taking off, and it's time to share more code between web and mobile.
 
-This project aims to help you consume your ReactNative component library on a static/JAMStack Gatsby website. This means you can develop a component once, and use it on both your mobile app, and your static website.
+There's already Expo web, but it is not suited for a marketing website that needs JAMStack / SEO / CMS integration / Performance / Gatsby-image ...
 
-This plugin supports Expo unimodules, animati, you are not limited to simple primitive components (your design system), but can also share code between more meaningful experiences, like build a nice cross-platform camera view thanks to the `expo-camera` unimodule.
+This project aims to "merge" Expo for web with Gatsby, so that you can build useful things like:
 
-If you have a Docz documentation website (Gatsby-based), you'll be able to display interactable ReactNative components as part of your documentation.
-
-If you have a blog about ReactNative, you can enhance the reader's experience by embedding ReactNative components directly inside your blog posts, using MDX.
-
-If you are not building a mobile app and don't care about sharing code, you can also consider React-Native-Web as a performant CSS-in-JS library for the web, as an alternative to Styled-Components or Emotion.
-
+- Share a universal cross-platform design system between your mobile app and your marketing website
+- Blog about ReactNative, and include runnable RN demos directly in your MDX
+- Document your ReactNative components with Docz
+- Use ReactNativeWeb as a performant CSS-in-JS lib, like Twitter does.
 
 # Setup
 
