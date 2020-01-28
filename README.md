@@ -118,13 +118,14 @@ export default IndexPage
 # FAQ
 
 
-**Expo already has web support, why do I need this?**
+### Expo already has web support, why do I need this?
 
 Expo web support is more like Create-React-App, it only outputs a single html file and does client side routing. It works fine for apps, but miss the various benefits of Gatsby, including performance, SEO, CMS integration, Gatsby-image...
 
 Actually, this plugin uses the same webpack config as Expo web support, and Expo (Evan Bacon) contributed to this project. You'll also find support for Next if you need a static/SSR hybrid.
 
-**How to share code for navigation/routing?**
+
+### How to share code for navigation/routing?
 
 This is not easy, because navigation patterns are different between web and mobile. 
 
@@ -135,7 +136,7 @@ You'd rather keep using platform-specific navigation trees (pages for Gatsby, an
 Eventually you could build your own cross-platform `navigate()` function, and your own cross-platform `Link` component (take a look at [expo-gatsby-navigation](https://github.com/nandorojo/expo-gatsby-navigation).
 
 
-**Can I share the same repo to build a mobile app and a Gatsby site with shared components?**
+### Can I share the same repo to build a mobile app and a Gatsby site with shared components?
 
 The most simple way to share code between an Expo app and a Gatsby site is currently to use a single folder for both the Expo app and the Gatsby app.
 
@@ -143,11 +144,13 @@ Otherwise you can try to setup a monorepo, but keep in mind this requires more c
 
 You can also read the Expo doc about [adding Gatsby support to an existing app](https://docs.expo.io/versions/latest/guides/using-gatsby/).
 
-**How can I publish an universal cross-platform component that works on web and mobile?**
+
+### How can I publish an universal cross-platform component that works on web and mobile?
 
 You can take a loot at this example: [expo-dark-mode-switch](https://github.com/EvanBacon/expo-dark-mode-switch). It uses [expo-module-scripts](https://www.npmjs.com/package/expo-module-scripts).
 
 You can also check [react-native-community/bob](https://github.com/react-native-community/bob)
+
 
 # Hire a freelance expert
 
