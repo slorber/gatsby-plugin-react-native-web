@@ -3,43 +3,60 @@
 [![NPM](https://img.shields.io/npm/dm/gatsby-plugin-react-native-web.svg)](https://www.npmjs.com/package/gatsby-plugin-react-native-web)
 [![Build Status](https://travis-ci.com/slorber/gatsby-plugin-react-native-web.svg?branch=master)](https://travis-ci.com/slorber/gatsby-plugin-react-native-web)
 
-Share components between your React Native mobile app and your Gatsby static website.
+Adds [React-Native-Web](https://github.com/necolas/react-native-web) and [Expo](https://docs.expo.io/) support to Gatsby.
+
+This means you can use components from the ReactNative ecosystem, directly on your Gatsby website (including MDX and Docz).
+
+Support includes:
+- Primitives from ReactNative
+- Expo unimodules with web support like `expo-camera`
+- Universal ReactNative design systems, such as `react-native-paper` or `react-native-ui-kitten` (or your own)
+- Universal gesture systems with Animated, `react-native-gesture-handler` or Reanimated.
+- Univesal SVG components using `react-native-svg`
+
+
+# Why
+
+Cross-platform code is finally taking off, and it's time to share more code between web and mobile.
+
+This project aims to help you consume your ReactNative component library on a static/JAMStack Gatsby website. This means you can develop a component once, and use it on both your mobile app, and your static website.
+
+This plugin supports Expo unimodules, animati, you are not limited to simple primitive components (your design system), but can also share code between more meaningful experiences, like build a nice cross-platform camera view thanks to the `expo-camera` unimodule.
+
+If you have a Docz documentation website (Gatsby-based), you'll be able to display interactable ReactNative components as part of your documentation.
+
+If you have a blog about ReactNative, you can enhance the reader's experience by embedding ReactNative components directly inside your blog posts, using MDX.
+
+If you are not building a mobile app and don't care about sharing code, you can also consider React-Native-Web as a performant CSS-in-JS library for the web, as an alternative to Styled-Components or Emotion.
+
 
 # Setup
 
-1. Install the plugin: `yarn add react-native-web gatsby-plugin-react-native-web` or `npm install --save react-native-web gatsby-plugin-react-native-web`
-2. Create a `gatsby-config.js` and use the plugin:
-   `gatsby-config.js`
+**1. Install required dependencies**
 
-   ```js
+```
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-web": "^0.11.7",
+    "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
+    "gatsby-plugin-react-native-web": "^3.0.0-beta.7",
+    "expo": "^36.0.2",
+```    
+
+Here are versions that work fine together. 
+It is likely to work with newer versions too. 
+[React-Native-Web](https://github.com/necolas/react-native-web) show which RN version it has support for.
+
+
+
+**2. Create a `gatsby-config.js` and use the plugin:**
+
+```js
    module.exports = {
      plugins: [
        `gatsby-plugin-react-native-web`,
-       /* ... */
      ],
    }
-   ```
-
-3. Install the babel preset for React Native web: `yarn add --dev babel-preset-expo` or `npm install --save-dev babel-preset-expo`
-
-4. Create a `babel.config.js` and use the Babel preset:
-   `babel.config.js`
-
-   ```js
-   module.exports = { presets: ['babel-preset-expo'] }
-   ```
-
-# Gatsby 2
-
-Use the 2.x branch
-
-`yarn add gatsby-plugin-react-native-web@2.0.0-beta.0`
-
-Add the RN / RNW dependencies.
-Choose versions carefully according to RNW doc.
-If you want you can pick versions from `examples` folder.
-
-Please report [here](https://github.com/slorber/gatsby-plugin-react-native-web) if it works fine for you, or not.
+```
 
 # Demo
 
@@ -97,6 +114,40 @@ export default IndexPage
 - Uses `@expo/webpack-config` which creates aliases for various React Native asset features and ensures that all React Native packages, and Unimodules are loaded with Babel.
 - Creates support for Gatsby SSR with `react-native-web`
 - Extracts critical `react-native-web` `StyleSheet` CSS during SSR and adds it to page.
+
+# FAQ
+
+
+**Expo already has web support, why do I need this?**
+
+Expo web support is more like Create-React-App, it only outputs a single html file and does client side routing. It works fine for apps, but miss the various benefits of Gatsby, including performance, SEO, CMS integration, Gatsby-image...
+
+Actually, this plugin uses the same webpack config as Expo web support, and Expo (Evan Bacon) contributed to this project. You'll also find support for Next if you need a static/SSR hybrid.
+
+**How to share code for navigation/routing?**
+
+This is not easy, because navigation patterns are different between web and mobile. 
+
+ReactNavigation may have web support, but Gatsby can't use ReactNavigation config easily to construct static pages.
+
+You'd rather keep using platform-specific navigation trees (pages for Gatsby, and stacks/tabs for ReactNavigation).
+
+Eventually you could build your own cross-platform `navigate()` function, and your own cross-platform `Link` component (take a look at [expo-gatsby-navigation](https://github.com/nandorojo/expo-gatsby-navigation).
+
+
+**Can I share the same repo to build a mobile app and a Gatsby site with shared components?**
+
+The most simple way to share code between an Expo app and a Gatsby site is currently to use a single folder for both the Expo app and the Gatsby app.
+
+Otherwise you can try to setup a monorepo, but keep in mind this requires more complex configuration, and Metro does not follow symlinks.
+
+You can also read the Expo doc about [adding Gatsby support to an existing app](https://docs.expo.io/versions/latest/guides/using-gatsby/).
+
+**How can I publish an universal cross-platform component that works on web and mobile?**
+
+You can take a loot at this example: [expo-dark-mode-switch](https://github.com/EvanBacon/expo-dark-mode-switch). It uses [expo-module-scripts](https://www.npmjs.com/package/expo-module-scripts).
+
+You can also check [react-native-community/bob](https://github.com/react-native-community/bob)
 
 # Hire a freelance expert
 
