@@ -34,12 +34,12 @@ This project aims to "merge" Expo for web with Gatsby, so that you can build use
 **1. Install required dependencies**
 
 ```
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
-    "react-native-web": "^0.11.7",
-    "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
-    "gatsby-plugin-react-native-web": "^3.0.0-beta.7",
-    "expo": "^36.0.2",
-```    
+"react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+"react-native-web": "^0.11.7",
+"react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
+"gatsby-plugin-react-native-web": "^3.0.0-beta.7",
+"expo": "^36.0.2",
+```
 
 Here are versions that work fine together. 
 It is likely to work with newer versions too. 
