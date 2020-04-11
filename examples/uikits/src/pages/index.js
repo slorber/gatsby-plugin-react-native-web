@@ -28,7 +28,7 @@ const IndexPage = () => (
     </P>
     <P>
       Note: the fact that a site is static does not mean you can't build highly
-      interactive things and retriève dynamic data from apis. See this more
+      interactive things and retrieve dynamic data from apis. See this more
       dynamic example:{' '}
       <ExternalLink href="https://gatsby-rnw-todos.netlify.com/">
         https://gatsby-rnw-todos.netlify.com/
