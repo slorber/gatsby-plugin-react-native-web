@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-react-native-web",
-  "version": "3.0.0-beta.7",
+  "version": "3.1.0",
   "main": "index.js",
   "description": "Adds Unimodule & React Native support to Gatsby",
   "keywords": [
@@ -31,9 +31,9 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "@expo/webpack-config": "^0.10.6",
-    "babel-plugin-remove-graphql-queries": ">=2.7.19",
-    "babel-preset-expo": "^8.0.0"
+    "@expo/webpack-config": ">=0.11",
+    "babel-plugin-remove-graphql-queries": ">=2.8.1",
+    "babel-preset-expo": "^8.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
