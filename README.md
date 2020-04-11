@@ -1,11 +1,11 @@
-# Gatsby plugin for react-native-web
+# Gatsby plugin for React-Native-Web / Expo
 
 [![NPM](https://img.shields.io/npm/dm/gatsby-plugin-react-native-web.svg)](https://www.npmjs.com/package/gatsby-plugin-react-native-web)
 [![Build Status](https://travis-ci.com/slorber/gatsby-plugin-react-native-web.svg?branch=master)](https://travis-ci.com/slorber/gatsby-plugin-react-native-web)
 
 Adds [React-Native-Web](https://github.com/necolas/react-native-web) and [Expo](https://docs.expo.io/) support to Gatsby.
 
-This means you can use components from the ReactNative ecosystem, directly on your Gatsby website.
+This means you can use components from the ReactNative / Expo ecosystem, directly on your Gatsby website.
 
 Support includes:
 - Primitive components from ReactNative (check RNW [support](https://github.com/necolas/react-native-web#compatibility-with-react-native))
@@ -13,8 +13,9 @@ Support includes:
 - Universal ReactNative design system libraries, like `react-native-paper`, `react-native-ui-kitten`, your own...
 - Universal gesture systems with Animated, `react-native-gesture-handler` or Reanimated.
 - Universal SVG components using `react-native-svg`
+- Automatic transpilation of third party react-native libs
 - Works in MDX
-- Works in Docz
+- Works in Docz (as it's Gatsby-based)
 
 **Note**: you don't necessarily need to use Expo, plain regular React-Native-Web is fine. It's just if you want to use Expo it's already setup for you.
 
