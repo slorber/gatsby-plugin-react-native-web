@@ -72,7 +72,9 @@ yarn add react-native react-native-web@~0.11.7 gatsby-plugin-react-native-web ex
    }
 ```
 
-**3. Install additional unimodules / cross-platform libraries**
+**3. Install additional cross-platform libraries / unimodules (optional)**
+
+Add expo audio/video components:
 
 ```
 yarn add expo-av
@@ -82,11 +84,13 @@ yarn add expo-av
 
 Create an example page like [this one](./recipePage.js) in your `./pages` folder, or try importing React-Native / Expo components into an existing one.
 
+--- 
+
 # Demo
 
 The `examples` folder have runnable Gatsby site demos. They are also hosted:
 
-- [My website](https://sebastienlorber.com): an [open-source](https://github.com/slorber/sebastienlorber.com) Gatsby blog. All MDX embedded components are using React-Native ([example](https://sebastienlorber.com/using-expo-in-gatsby)).
+- [sebastienlorber.com](https://sebastienlorber.com): an [open-source](https://github.com/slorber/sebastienlorber.com) Gatsby/Novela blog. All MDX embedded components are using React-Native ([example](https://sebastienlorber.com/using-expo-in-gatsby)).
 - [Todos example](https://gatsby-rnw-todos.netlify.com): a "todo backoffice" built with Gatsby + RNW + Apollo + TS + react-native-paper: I like fancy stacks.
 
 # Example usage
