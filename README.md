@@ -3,51 +3,60 @@
 [![NPM](https://img.shields.io/npm/dm/gatsby-plugin-react-native-web.svg)](https://www.npmjs.com/package/gatsby-plugin-react-native-web)
 [![Build Status](https://travis-ci.com/slorber/gatsby-plugin-react-native-web.svg?branch=master)](https://travis-ci.com/slorber/gatsby-plugin-react-native-web)
 
-Adds [React-Native-Web](https://github.com/necolas/react-native-web) and [Expo](https://docs.expo.io/) support to Gatsby.
+Adds [React-Native-Web](https://github.com/necolas/react-native-web) and [Expo](https://docs.expo.io/) support to a Gatsby site.
 
-This means you can use components from the ReactNative / Expo ecosystem, directly on your Gatsby website.
+Example "production" usage on my blog: [sebastienlorber.com/using-expo-in-gatsby](https://sebastienlorber.com/using-expo-in-gatsby)
 
-Support includes:
-- Primitive components from ReactNative (check RNW [support](https://github.com/necolas/react-native-web#compatibility-with-react-native))
-- Expo unimodules with web support like `expo-camera` (check Expo doc for support)
-- Universal ReactNative design system libraries, like `react-native-paper`, `react-native-ui-kitten`, your own...
-- Universal gesture systems with Animated, `react-native-gesture-handler` or Reanimated.
-- Universal SVG components using `react-native-svg`
-- Automatic transpilation of third party react-native libs
-- Works in MDX
-- Works in Docz (as it's Gatsby-based)
-
-**Note**: you don't necessarily need to use Expo, plain regular React-Native-Web is fine. It's just if you want to use Expo it's already setup for you.
+--- 
 
 # Why
 
+Main reasons:
+
+- sharing components between your mobile app and your static website.
+- using [atomic CSS-in-JS](https://sebastienlorber.com/atomic-css-in-js/) with React-Native-Web
+
 Cross-platform code is finally taking off, and it's time to share more code between web and mobile.
-
 There's already Expo web, but it is not suited for a marketing website that needs JAMStack / SEO / CMS integration / Performance / Gatsby-image ...
-
 This project aims to "merge" Expo for web with Gatsby, so that you can build useful things like:
 
 - Share a universal cross-platform design system between your mobile app and your marketing website
 - Blog about ReactNative, and include runnable RN demos directly in your MDX
 - Document your ReactNative components with Docz
-- Use ReactNativeWeb as a performant CSS-in-JS lib, like Twitter does.
+- Use ReactNativeWeb as a performant CSS-in-JS lib, like Twitter does (see [atomic CSS-in-JS](https://sebastienlorber.com/atomic-css-in-js/)).
+
+--- 
+
+# Supported features
+
+This plugin uses the same setup as Expo for web, thanks to [@expo/webpack-config](https://www.npmjs.com/package/@expo/webpack-config)
+
+Support includes:
+- Primitive components from ReactNative (check RNW [support](https://github.com/necolas/react-native-web#compatibility-with-react-native))
+- Expo unimodules with web support like `expo-camera` (check Expo doc for support)
+- .web.js extension handling
+- Universal ReactNative design system libraries, like `react-native-paper`, `react-native-ui-kitten`...
+- Universal gesture systems with Animated, `react-native-gesture-handler` or Reanimated.
+- Universal SVG components using `react-native-svg`
+- Automatic transpilation of third party react-native libs
+- Works in MDX
+- Works in Docz (Gatsby-based)
+
 
 # Setup
+
+**SHORTCUT: use the new Gatsby Recipe**
+
+```
+gatsby new my-themed-blog https://github.com/gatsbyjs/gatsby-starter-blog-theme
+```
+
 
 **1. Install required dependencies**
 
 ```
-"react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
-"react-native-web": "^0.11.7",
-"react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
-"gatsby-plugin-react-native-web": "^3.0.0-beta.7",
-"expo": "^36.0.2",
+yarn add react-native react-native-web@~0.11.7 gatsby-plugin-react-native-web expo
 ```
-
-Here are versions that work fine together. 
-It is likely to work with newer versions too. 
-[React-Native-Web](https://github.com/necolas/react-native-web) show which RN version it has support for.
-
 
 
 **2. Create a `gatsby-config.js` and use the plugin:**
@@ -60,26 +69,26 @@ It is likely to work with newer versions too.
    }
 ```
 
-**3. Install additional unimodules / cross-platform libraries**.
+**3. Install additional unimodules / cross-platform libraries**
 
 ```
-yarn expo install react-native-svg
-yarn expo install expo-camera
+yarn add expo-av
 ``` 
 
-Using `yarn expo install myExpoLib` is useful because Expo knows the most appropriate version to install, according to current Expo SDK.
+**4. Create a test pages**
+
+Create an example page like [this one](./recipePage.js) in your `./pages` folder, or try importing React-Native / Expo components into an existing one.
 
 # Demo
 
 The `examples` folder have runnable Gatsby site demos. They are also hosted:
 
-- [Todos example](https://gatsby-rnw-todos.netlify.com): a "todo backoffice" built with Gatsby + RNW + Apollo + TS + react-native-paper: a fancy but effective stack.
+- [My website](https://sebastienlorber.com): an [open-source](https://github.com/slorber/sebastienlorber.com) Gatsby blog. All MDX embedded components are using React-Native ([example](https://sebastienlorber.com/using-expo-in-gatsby)).
+- [Todos example](https://gatsby-rnw-todos.netlify.com): a "todo backoffice" built with Gatsby + RNW + Apollo + TS + react-native-paper: I like fancy stacks.
 
 # Example usage
 
-You'd better look at the code of the online demo.
-
-Otherwise, here is a simple Gatsby page that renders fine:
+Very basic example:
 
 ```js
 import React from 'react'
@@ -124,7 +133,7 @@ export default IndexPage
 - Implements module resolution for files with platform extensions like `.web.js`, `.web.tsx`...
 - Uses `@expo/webpack-config` which creates aliases for various React Native asset features and ensures that all React Native packages, and Unimodules are loaded with Babel.
 - Creates support for Gatsby SSR with `react-native-web`
-- Extracts critical `react-native-web` `StyleSheet` CSS during SSR and adds it to page.
+- Extracts critical CSS with the `StyleSheet` api of `react-native-web` and adds it to the static page.
 
 # FAQ
 
