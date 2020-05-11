@@ -2,11 +2,14 @@
 
 ---
 
-Install necessary packages
+Install npm packages
+
+`expo-av` is optional, just for the example page
 
 <NPMPackage name="expo" />
+<NPMPackage name="expo-av" />
 <NPMPackage name="react-native" />
-<NPMPackage name="react-native-web" />
+<NPMPackage name="react-native-web" version="~0.11.7" />
 <NPMPackage name="gatsby-plugin-react-native-web" />
 
 ---
@@ -18,6 +21,8 @@ Install the plugin in gatsby-config.js
 ---
 
 Add a test page
+
+It will be available at http://localhost:8000/react-native-web
 
 <File
   path="src/pages/react-native-web.js"
