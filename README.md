@@ -43,13 +43,16 @@ Support includes:
 - Works in Docz (Gatsby-based)
 
 
-# Setup
+# Recipe
 
-**SHORTCUT: use the new Gatsby Recipe**
+Use the new Gatsby Recipe feature to get started fast:
 
 ```
-gatsby new my-themed-blog https://github.com/gatsbyjs/gatsby-starter-blog-theme
+gatsby recipes https://raw.githubusercontent.com/slorber/gatsby-plugin-react-native-web/master/recipe.mdx
 ```
+
+
+# Manual setup
 
 
 **1. Install required dependencies**
