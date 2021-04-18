@@ -17,7 +17,9 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-native": "^0.64.0",
+    "react-native-web": "^0.15.7"
   },
   "devDependencies": {
     "prettier": "2.2.1"
