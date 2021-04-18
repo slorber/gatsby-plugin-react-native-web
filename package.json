@@ -31,22 +31,25 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "@expo/webpack-config": ">=0.11",
+    "@expo/webpack-config": ">=0.12",
     "babel-plugin-remove-graphql-queries": ">=2.8.1",
-    "babel-preset-expo": "^8.1.0"
+    "babel-preset-expo": "^8.3.0"
+  },
+  "resolution": {
+    "webpack": "^5.33.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
-    "babel-plugin-react-native-web": "^0.6.1",
+    "babel-plugin-react-native-web": "^0.15.7",
     "babel-preset-gatsby-package": "^0.2.7",
     "cross-env": "^5.2.1",
-    "react-native-web": "^0.11.7"
+    "react-native-web": "^0.15.7"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0",
+    "gatsby": "^3.3.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-native-web": "^0.11.7"
+    "react-native-web": "^0.15.7"
   }
 }

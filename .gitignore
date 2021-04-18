@@ -64,3 +64,6 @@ typings/
 /gatsby-node.js
 
 *.iml
+
+examples/todos/.expo
+examples/uikits/.expo
