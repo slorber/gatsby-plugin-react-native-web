@@ -1,5 +1,6 @@
 import * as React from "react"
 import { View, Text, StyleSheet } from "react-native"
+import Animated from "react-native-reanimated"
 
 const IndexPage = () => (
   <View style={styles.container}>
