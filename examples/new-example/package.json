@@ -4,24 +4,29 @@
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "resolutions": {
+    "graphql": "^15.4.0",
+    "graphql-compose": "^7.25.0",
+    "webpack": ">=5.33.2"
+  },
   "dependencies": {
-    "gatsby": "^3.2.1",
-    "gatsby-plugin-gatsby-cloud": "^2.2.0",
-    "gatsby-plugin-image": "^1.2.1",
-    "gatsby-plugin-manifest": "^3.2.0",
-    "gatsby-plugin-offline": "^4.2.0",
-    "gatsby-plugin-react-helmet": "^4.2.0",
-    "gatsby-plugin-sharp": "^3.2.1",
-    "gatsby-source-filesystem": "^3.2.0",
-    "gatsby-transformer-sharp": "^3.2.0",
+    "gatsby": "^3.3.0",
+    "gatsby-plugin-image": "^1.3.0",
+    "gatsby-plugin-manifest": "^3.3.0",
+    "gatsby-plugin-offline": "^4.3.0",
+    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-sharp": "^3.3.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-sharp": "^3.3.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-native": "^0.64.0",
     "react-native-web": "^0.15.7"
   },
   "devDependencies": {
+    "@types/react-native": "^0.64.3",
     "prettier": "2.2.1"
   },
   "keywords": [
@@ -31,8 +36,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "develop:verbose": "node --nolazy --trace-deprecation node_modules/.bin/gatsby develop --inspect-brk",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "yarn run develop",
+    "start": "yarn run develop:verbose",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"

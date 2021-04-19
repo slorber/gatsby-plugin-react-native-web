@@ -1,29 +1,40 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { View, Text, StyleSheet } from "react-native"
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
+  <View style={styles.container}>
+    <View style={styles.left}>
+      <Text style={styles.title}>Prout on the left</Text>
+    </View>
+    <View style={styles.right}>
+      <Text style={styles.title}>Prout on the right</Text>
+    </View>
+  </View>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    height: "100vh",
+  },
+  left: {
+    flex: 1,
+    backgroundColor: "rose",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  right: {
+    flex: 1,
+    backgroundColor: "lightblue",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 22,
+  },
+})
 
 export default IndexPage

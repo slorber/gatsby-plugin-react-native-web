@@ -36,23 +36,23 @@ const getExpoJsLoaderRule = config => {
   return expoJsLoader
 }
 
-const customizeExpoJsLoader = config => {
-  const expoJsLoaderRule = getExpoJsLoaderRule(config)
+// const customizeExpoJsLoader = config => {
+//   const expoJsLoaderRule = getExpoJsLoaderRule(config)
 
-  expoJsLoaderRule.use.options.plugins =
-    expoJsLoaderRule.use.options.plugins || []
+//   expoJsLoaderRule.use.options.plugins =
+//     expoJsLoaderRule.use.options.plugins || []
 
-  // We need to add the gatsby static queries babel plugin to expo js loader
-  // otherwise gatsby will complain
-  // see https://github.com/slorber/gatsby-plugin-react-native-web/issues/23
-  expoJsLoaderRule.use.options.plugins.push([
-    'babel-plugin-remove-graphql-queries',
-    {},
-    'babel-plugin-remove-graphql-queries-for-expo-js-loader',
-  ])
+//   // We need to add the gatsby static queries babel plugin to expo js loader
+//   // otherwise gatsby will complain
+//   // see https://github.com/slorber/gatsby-plugin-react-native-web/issues/23
+//   expoJsLoaderRule.use.options.plugins.push([
+//     'babel-plugin-remove-graphql-queries',
+//     {},
+//     'babel-plugin-remove-graphql-queries-for-expo-js-loader',
+//   ])
 
-  return config
-}
+//   return config
+// }
 
 const resolvableExtensions = () => getModuleFileExtensions('web')
 
@@ -71,7 +71,8 @@ function onCreateWebpackConfig({ actions, getConfig }) {
 
   let config
   try {
-    config = customizeExpoJsLoader(withUnimodules(gatsbyConfig))
+    // config = customizeExpoJsLoader(withUnimodules(gatsbyConfig))
+    config = gatsbyConfig
   } catch (error) {
     console.error(error)
     process.exit(1)
