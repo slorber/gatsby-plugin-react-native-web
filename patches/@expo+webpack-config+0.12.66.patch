@@ -1,0 +1,32 @@
+diff --git a/node_modules/@expo/webpack-config/webpack/addons/withUnimodules.js b/node_modules/@expo/webpack-config/webpack/addons/withUnimodules.js
+index 67671c7..4587281 100644
+--- a/node_modules/@expo/webpack-config/webpack/addons/withUnimodules.js
++++ b/node_modules/@expo/webpack-config/webpack/addons/withUnimodules.js
+@@ -18,9 +18,10 @@ const withEntry_1 = __importDefault(require("./withEntry"));
+  * @param webpackConfig Optional existing Webpack config to modify.
+  * @param env Optional Environment options for configuring what features the Webpack config supports.
+  * @param argv
++ * @param shouldIgnoreExternalModules Optional
+  * @category addons
+  */
+-function withUnimodules(webpackConfig = {}, env = {}, argv = {}) {
++function withUnimodules(webpackConfig = {}, env = {}, argv = {}, shouldIgnoreExternalModules = true) {
+     var _a;
+     // @ts-ignore: We should attempt to use the project root that the other config is already using (used for Gatsby support).
+     env.projectRoot = env.projectRoot || webpackConfig.context || paths_1.getPossibleProjectRoot();
+@@ -103,9 +104,12 @@ function withUnimodules(webpackConfig = {}, env = {}, argv = {}) {
+     webpackConfig.resolve = Object.assign(Object.assign({}, webpackConfig.resolve), { symlinks: false, 
+         // Support platform extensions like .web.js
+         extensions: env_1.getModuleFileExtensions('web') });
+-    // Transpile and remove expo modules from Next.js externals.
+-    const includeFunc = babelLoader.include;
+-    webpackConfig = ignoreExternalModules(webpackConfig, includeFunc);
++
++        if (shouldIgnoreExternalModules) {
++            // Transpile and remove expo modules from Next.js externals.
++            const includeFunc = babelLoader.include;
++            webpackConfig = ignoreExternalModules(webpackConfig, includeFunc);
++        }
+     // Add a loose requirement on the ResizeObserver polyfill if it's installed...
+     webpackConfig = withEntry_1.default(webpackConfig, env, {
+         entryPath: 'resize-observer-polyfill/dist/ResizeObserver.global',
