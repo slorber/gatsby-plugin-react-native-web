@@ -71,7 +71,6 @@ function onCreateWebpackConfig({ actions, getConfig }) {
   let config
   try {
     config = customizeExpoJsLoader(withUnimodules(gatsbyConfig, {}, {}, false))
-    // config = customizeExpoJsLoader(withUnimodules(gatsbyConfig, {}, {}, false))
   } catch (error) {
     console.error(error)
     process.exit(1)
