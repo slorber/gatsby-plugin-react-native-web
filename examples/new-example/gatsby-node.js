@@ -1,3 +1,5 @@
+const { withUnimodules } = require("@expo/webpack-config/addons")
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -16,23 +18,22 @@ function onCreateWebpackConfig({
   entry,
   resolve,
 }) {
-  const gatsbyConfig = getConfig()
-
-  console.log({ entry: gatsbyConfig.entry })
-  if (!gatsbyConfig.context) {
-    throw new Error("Expected Gatsby config to provide the root context")
-  }
-
-  let config
   try {
-    // config = customizeExpoJsLoader(withUnimodules(gatsbyConfig))
-    config = gatsbyConfig
+    const gatsbyConfig = getConfig()
+
+    const expoConfig = withUnimodules(gatsbyConfig, {}, {}, false)
+
+    expoConfig.resolve.alias["react-native$"] = "react-native-web"
+
+    if (!expoConfig.context) {
+      throw new Error("Expected Gatsby config to provide the root context")
+    }
+
+    actions.replaceWebpackConfig(expoConfig)
   } catch (error) {
-    console.error(error)
+    console.warn(error)
     process.exit(1)
   }
-
-  actions.replaceWebpackConfig(config)
 }
 
 exports.onCreateWebpackConfig = onCreateWebpackConfig

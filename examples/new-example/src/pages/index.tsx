@@ -1,24 +1,76 @@
 import * as React from "react"
 import { View, Text, StyleSheet } from "react-native"
-import Animated from "react-native-reanimated"
+import styled from "styled-components/native"
 
-const IndexPage = () => (
-  <View style={styles.container}>
-    <View style={styles.left}>
-      <Text style={styles.title}>Prout on the left</Text>
-    </View>
-    <View style={styles.right}>
-      <Text style={styles.title}>Prout on the right</Text>
-    </View>
-  </View>
-)
+import Animated, {
+  useSharedValue,
+  withSpring,
+  useAnimatedStyle,
+  useAnimatedGestureHandler,
+} from "react-native-reanimated"
+import {
+  PanGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from "react-native-gesture-handler"
+
+const IndexPage = () => {
+  const x = useSharedValue(0)
+  const y = useSharedValue(0)
+
+  const gestureHandler = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    { startX: number; startY: number }
+  >({
+    onStart: (_, ctx) => {
+      ctx.startX = x.value
+      ctx.startY = y.value
+    },
+    onActive: (event, ctx) => {
+      x.value = ctx.startX + event.translationX
+      y.value = ctx.startY + event.translationY
+    },
+    onEnd: _ => {
+      x.value = withSpring(0)
+      y.value = withSpring(0)
+    },
+  })
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: x.value,
+        },
+        {
+          translateY: y.value,
+        },
+      ],
+    }
+  })
+
+  return (
+    <Container>
+      <PanGestureHandler onGestureEvent={gestureHandler}>
+        <Box style={animatedStyle} />
+      </PanGestureHandler>
+    </Container>
+  )
+}
+
+const Container = styled.View`
+  flex: 1;
+  flex-direction: row;
+  height: 100vh;
+`
+
+const BOX_SIZE = 250
+const Box = styled(Animated.View)`
+  width: ${BOX_SIZE}px;
+  height: ${BOX_SIZE}px;
+  background-color: red;
+`
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    height: "100vh",
-  },
   left: {
     flex: 1,
     backgroundColor: "rose",
