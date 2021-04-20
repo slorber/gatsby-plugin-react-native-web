@@ -21,15 +21,13 @@ function onCreateWebpackConfig({
   try {
     const gatsbyConfig = getConfig()
 
-    const expoConfig = withUnimodules(gatsbyConfig, {}, {}, false)
+    gatsbyConfig.resolve.alias["react-native$"] = "react-native-web"
 
-    expoConfig.resolve.alias["react-native$"] = "react-native-web"
-
-    if (!expoConfig.context) {
+    if (!gatsbyConfig.context) {
       throw new Error("Expected Gatsby config to provide the root context")
     }
 
-    actions.replaceWebpackConfig(expoConfig)
+    actions.replaceWebpackConfig(gatsbyConfig)
   } catch (error) {
     console.warn(error)
     process.exit(1)

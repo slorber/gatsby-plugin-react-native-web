@@ -34,6 +34,7 @@ module.exports = {
         // Add any options here
       },
     },
+    `gatsby-plugin-react-native-web`,
     // `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

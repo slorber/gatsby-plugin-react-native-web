@@ -48,8 +48,6 @@
     "babel-preset-gatsby": "^1.3.0",
     "gatsby-plugin-ts-config": "^1.1.5",
     "metro-react-native-babel-preset": "^0.65.2",
-    "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0",
     "prettier": "2.2.1"
   },
   "keywords": [
@@ -64,7 +62,6 @@
     "start": "yarn run develop:verbose",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "postinstall": "patch-package",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {

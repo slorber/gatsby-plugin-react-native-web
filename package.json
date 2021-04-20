@@ -36,7 +36,7 @@
     "babel-plugin-remove-graphql-queries": ">=3.3.0",
     "babel-preset-expo": "^8.3.0",
     "patch-package": "^6.4.7",
-    "postinstall": "^0.7.0"
+    "postinstall-postinstall": "^2.1.0"
   },
   "resolution": {
     "webpack": "^5.33.2"

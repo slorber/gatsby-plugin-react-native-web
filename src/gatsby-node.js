@@ -3,22 +3,20 @@ import { getModuleFileExtensions } from '@expo/webpack-config/env'
 
 // Temporary until better api is provided to get/customize expo js loader
 // See https://github.com/expo/examples/pull/39#discussion_r367702217
-const getExpoJsLoaderRule = config => {
-  const {
-    conditionMatchesFile,
-  } = require('@expo/webpack-config/utils')
+const getExpoJsLoaderRule = (config) => {
+  const { conditionMatchesFile } = require('@expo/webpack-config/utils')
   const { resolve, join } = require('path')
 
   const rules = config.module.rules
 
   // TODO bad way to find js loaders...
-  const jsLoaders = rules.filter(rule => {
+  const jsLoaders = rules.filter((rule) => {
     if (rule.test) {
       const relativeFoldersToTry = [
         '../..',
         '../../.docz', // Needed for Docz, as it has a nested structure
       ]
-      return relativeFoldersToTry.some(relativeFolder =>
+      return relativeFoldersToTry.some((relativeFolder) =>
         conditionMatchesFile(
           rule,
           resolve(join(__dirname, relativeFolder, 'foo.js'))
@@ -36,23 +34,24 @@ const getExpoJsLoaderRule = config => {
   return expoJsLoader
 }
 
-// const customizeExpoJsLoader = config => {
-//   const expoJsLoaderRule = getExpoJsLoaderRule(config)
+const customizeExpoJsLoader = (config) => {
+  const expoJsLoaderRule = getExpoJsLoaderRule(config)
 
-//   expoJsLoaderRule.use.options.plugins =
-//     expoJsLoaderRule.use.options.plugins || []
+  expoJsLoaderRule.use.forEach((u, index) => {
+    expoJsLoaderRule.use[index].options.plugins = u.options.plugins || []
 
-//   // We need to add the gatsby static queries babel plugin to expo js loader
-//   // otherwise gatsby will complain
-//   // see https://github.com/slorber/gatsby-plugin-react-native-web/issues/23
-//   expoJsLoaderRule.use.options.plugins.push([
-//     'babel-plugin-remove-graphql-queries',
-//     {},
-//     'babel-plugin-remove-graphql-queries-for-expo-js-loader',
-//   ])
+    // We need to add the gatsby static queries babel plugin to expo js loader
+    // otherwise gatsby will complain
+    // see https://github.com/slorber/gatsby-plugin-react-native-web/issues/23
+    expoJsLoaderRule.use[index].options.plugins.push([
+      'babel-plugin-remove-graphql-queries',
+      {},
+      'babel-plugin-remove-graphql-queries-for-expo-js-loader',
+    ])
+  })
 
-//   return config
-// }
+  return config
+}
 
 const resolvableExtensions = () => getModuleFileExtensions('web')
 
@@ -71,8 +70,8 @@ function onCreateWebpackConfig({ actions, getConfig }) {
 
   let config
   try {
-    // config = customizeExpoJsLoader(withUnimodules(gatsbyConfig))
-    config = gatsbyConfig
+    config = customizeExpoJsLoader(withUnimodules(gatsbyConfig, {}, {}, false))
+    // config = customizeExpoJsLoader(withUnimodules(gatsbyConfig, {}, {}, false))
   } catch (error) {
     console.error(error)
     process.exit(1)
