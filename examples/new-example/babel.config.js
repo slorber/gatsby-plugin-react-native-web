@@ -11,12 +11,6 @@ module.exports = {
       },
     ],
     "react-native-reanimated/plugin",
-    [
-      "@babel/plugin-proposal-class-properties",
-      {
-        loose: true,
-      },
-    ],
   ],
   presets: [
     "module:metro-react-native-babel-preset",
@@ -29,7 +23,5 @@ module.exports = {
         },
       },
     ],
-    "@babel/preset-flow",
-    "@babel/preset-env",
   ],
 }
